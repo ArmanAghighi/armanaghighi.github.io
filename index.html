@@ -134,22 +134,35 @@ const logo1 = document.getElementById('logo1');
 const logo2 = document.getElementById('logo2');
 let splashSkipped = false;
 
+// لوگوها فول‌اسکرین
+logo1.style.width = "100vw";
+logo1.style.height = "100vh";
+logo1.style.objectFit = "cover";
+logo2.style.width = "100vw";
+logo2.style.height = "100vh";
+logo2.style.objectFit = "cover";
+
 function fadeIn(el,dur=600){ el.style.transition=`opacity ${dur}ms ease, transform ${dur}ms ease`; el.style.opacity=1; el.style.transform='scale(1)'; }
-function fadeOut(el,dur=500){ el.style.transition=`opacity ${dur}ms ease, transform ${dur}ms ease`; el.style.opacity=0; el.style.transform='scale(1.1)'; }
+function fadeOut(el,dur=500){ el.style.transition=`opacity ${dur}ms ease, transform ${dur}ms ease`; el.style.opacity=0; el.style.transform='scale(1.05)'; }
 
 function startSplash(){
   if(splashSkipped) return;
   splashSkipped = true;
+
+  // صدا اتوماتیک
   if(psAudio){ psAudio.currentTime=0; psAudio.play().catch(()=>{}); }
 
+  // لوگو اول (6 ثانیه)
   fadeIn(logo1,800);
   setTimeout(()=>{
     fadeOut(logo1,500);
     setTimeout(()=>{
+      // لوگو دوم (9 ثانیه)
       fadeIn(logo2,800);
     },500);
-  },1200);
+  },6000);
 
+  // پایان لوگو دوم بعد 9 ثانیه
   setTimeout(()=>{
     fadeOut(logo2,500);
     setTimeout(()=>{
@@ -157,7 +170,7 @@ function startSplash(){
       main.style.display='grid';
       main.setAttribute('aria-hidden','false');
     },500);
-  },3000);
+  },6000 + 500 + 9000); // لوگو1+fade+logo2
 }
 
 function skipSplash(){
@@ -170,6 +183,9 @@ function skipSplash(){
 document.addEventListener('keydown',startSplash,{once:true});
 document.addEventListener('click',startSplash,{once:true});
 splash.addEventListener('click',skipSplash);
+
+// شروع اتوماتیک پس از لود صفحه
+window.addEventListener('load',()=>startSplash());
 </script>
 </body>
 </html>

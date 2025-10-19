@@ -73,6 +73,23 @@ footer{color:var(--muted);font-size:13px;margin-top:18px;text-align:right}
 @keyframes fadeOut{to{opacity:0;transform:scale(0.98) translateY(-6px)}}
 .fade-in{animation:fadeIn 0.8s ease forwards}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:none}}
+
+/* START BUTTON */
+#startOverlay{
+  position:fixed;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#05030a;
+  color:#7afcff;
+  font-family:monospace;
+  font-size:24px;
+  cursor:pointer;
+  z-index:2000;
+  flex-direction:column;
+}
+#startOverlay div:nth-child(2){ font-size:14px; color:#9aa0a6; margin-top:12px; }
 </style>
 </head>
 <body>
@@ -81,8 +98,14 @@ footer{color:var(--muted);font-size:13px;margin-top:18px;text-align:right}
 <canvas class="crt-noise" id="crt" width="512" height="256" aria-hidden="true"></canvas>
 <div class="vignette" aria-hidden="true"></div>
 
+<!-- START BUTTON -->
+<div id="startOverlay">
+  <div>Please Turn On The Device</div>
+  <div>Click anywhere to start</div>
+</div>
+
 <!-- SPLASH -->
-<div class="splash" id="splash" role="dialog" aria-label="Intro">
+<div class="splash" id="splash" role="dialog" aria-label="Intro" style="display:none;">
   <div class="center">
     <img id="logo1" src="PS1.jpg" alt="PS1 Logo 1" />
     <img id="logo2" src="ps 1.jpg" alt="PS1 Logo 2" />
@@ -96,7 +119,7 @@ footer{color:var(--muted);font-size:13px;margin-top:18px;text-align:right}
 </div>
 
 <!-- MAIN -->
-<div class="wrap" id="main" aria-hidden="true" style="display:none">
+<div class="wrap" id="main" aria-hidden="true">
   <main class="card" id="card">
     <aside class="profile">
       <div class="avatar" id="avatar">AA</div>
@@ -126,12 +149,12 @@ footer{color:var(--muted);font-size:13px;margin-top:18px;text-align:right}
 <audio id="psAudio" src="psx.mp3" preload="auto"></audio>
 
 <script>
-// ---------- Splash Animation ----------
 const splash = document.getElementById('splash');
 const main = document.getElementById('main');
 const psAudio = document.getElementById('psAudio');
 const logo1 = document.getElementById('logo1');
 const logo2 = document.getElementById('logo2');
+const startOverlay = document.getElementById('startOverlay');
 let splashSkipped = false;
 
 // لوگوها فول‌اسکرین
@@ -148,16 +171,13 @@ function fadeOut(el,dur=500){ el.style.transition=`opacity ${dur}ms ease, transf
 function startSplash(){
   if(splashSkipped) return;
   splashSkipped = true;
-
-  // صدا اتوماتیک
-  if(psAudio){ psAudio.currentTime=0; psAudio.play().catch(()=>{}); }
+  splash.style.display = 'flex';
 
   // لوگو اول (6 ثانیه)
   fadeIn(logo1,800);
   setTimeout(()=>{
     fadeOut(logo1,500);
     setTimeout(()=>{
-      // لوگو دوم (9 ثانیه)
       fadeIn(logo2,800);
     },500);
   },6000);
@@ -180,12 +200,20 @@ function skipSplash(){
   main.setAttribute('aria-hidden','false');
 }
 
-document.addEventListener('keydown',startSplash,{once:true});
-document.addEventListener('click',startSplash,{once:true});
-splash.addEventListener('click',skipSplash);
+// کاربر برای شروع کلیک کند
+function userStart(){
+  startOverlay.style.display = 'none';
+  if(psAudio){ psAudio.currentTime = 0; psAudio.play().catch(()=>{}); }
+  startSplash();
+}
 
-// شروع اتوماتیک پس از لود صفحه
-window.addEventListener('load',()=>startSplash());
+startOverlay.addEventListener('click', userStart, {once:true});
+startOverlay.addEventListener('touchstart', userStart, {once:true});
+
+// امکان skip با کلیک روی splash
+document.addEventListener('keydown', startSplash, {once:true});
+document.addEventListener('click', startSplash, {once:true});
+splash.addEventListener('click', skipSplash);
 </script>
 </body>
 </html>

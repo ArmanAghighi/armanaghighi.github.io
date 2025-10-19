@@ -24,13 +24,10 @@ html,body{height:100%;margin:0;background:linear-gradient(180deg,#04020a 0%, #07
 .splash .center{
   text-align:center; transform:translateY(0);
 }
-.ps-logo{
-  font-weight:900; letter-spacing:8px; font-size:84px; color:var(--accent);
-  text-shadow:0 12px 40px rgba(122,252,255,0.06), 0 0 18px rgba(155,92,255,0.06);
-  transform-origin:center center;
-  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.7));
+.splash img{
+  max-width:220px; display:block; margin:0 auto;
+  opacity:0; transform:scale(0.8); transition:opacity 0.6s ease, transform 0.6s ease;
 }
-.ps-sub{font-family: "Roboto Mono", monospace; color:rgba(200,255,255,0.9); margin-top:8px; font-size:14px;}
 
 /* scanlines + CRT overlay */
 .scanline{position:fixed;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px); background-size:100% 4px; mix-blend-mode:overlay; opacity:0.6; z-index:1001}
@@ -79,10 +76,7 @@ footer{color:var(--muted);font-size:13px;margin-top:18px;text-align:right}
 </style>
 </head>
 <body>
-<!-- background canvas -->
 <canvas id="bgCanvas"></canvas>
-
-<!-- scanlines + CRT -->
 <div class="scanline" aria-hidden="true"></div>
 <canvas class="crt-noise" id="crt" width="512" height="256" aria-hidden="true"></canvas>
 <div class="vignette" aria-hidden="true"></div>
@@ -90,241 +84,94 @@ footer{color:var(--muted);font-size:13px;margin-top:18px;text-align:right}
 <!-- SPLASH -->
 <div class="splash" id="splash" role="dialog" aria-label="Intro">
   <div class="center">
-    <div class="ps-logo" id="ps-logo">PLAY</div>
-    <div class="ps-sub">presents</div>
-    <div style="height:18px"></div>
+    <img id="logo1" src="PS1.jpg" alt="PS1 Logo 1" />
+    <img id="logo2" src="ps 1.jpg" alt="PS1 Logo 2" />
+    <div style="height:20px"></div>
     <div style="font-family:monospace;color:rgba(200,255,255,0.16);font-size:12px">© 1997 — retro-game-portfolio</div>
+    <div style="height:28px"></div>
+    <div style="font-size:13px;color:rgba(200,255,255,0.35);letter-spacing:1px">Booting...</div>
+    <div style="height:28px"></div>
+    <div style="font-size:12px;color:rgba(200,255,255,0.25);">Click / Press any key to skip</div>
   </div>
-  <div style="height:28px"></div>
-  <div style="font-size:13px;color:rgba(200,255,255,0.35);letter-spacing:1px">Booting...</div>
-  <div style="height:28px"></div>
-  <div style="font-size:12px;color:rgba(200,255,255,0.25);">Click / Press any key to begin</div>
 </div>
 
-<!-- MAIN (hidden initially) -->
+<!-- MAIN -->
 <div class="wrap" id="main" aria-hidden="true" style="display:none">
   <main class="card" id="card">
     <aside class="profile">
       <div class="avatar" id="avatar">AA</div>
       <div class="name"><h1>Arman Aghighi</h1><div class="type">Unity & AR Developer</div></div>
       <p class="bio">I craft immersive experiences with Unity & AR — building interactive worlds, gameplay systems and shaders.</p>
-
       <div class="skills" aria-hidden="true">
-        <div class="skill">Unity</div><div class="skill">C#</div><div class="skill">AR Foundation</div><div class="skill">Shaders</div><div class="skill">Optimization</div>
-      </div>
-
-      <div class="small-row" style="margin-top:12px">
-        <a class="btn" href="https://github.com/armanaghighi" target="_blank" rel="noopener">GitHub</a>
-        <a class="btn" href="Arman Aghighi Resume.pdf" download>Download Resume</a>
+        <div class="skill">Unity</div>
+        <div class="skill">C#</div>
+        <div class="skill">ARFoundation</div>
+        <div class="skill">Shader Graph</div>
+        <div class="skill">Procedural Gen</div>
       </div>
     </aside>
-
     <section class="menu-wrap">
-      <div class="menu-title"><div><div style="font-size:13px;color:var(--accent)">GAME PORTFOLIO</div><h2>MAIN MENU</h2></div></div>
-      <div class="menu" id="menu">
-        <div class="menu-item" data-action="start" tabindex="0"><div class="label">Start Portfolio</div><div class="hint">Enter</div></div>
-        <div class="menu-item" data-action="skills" tabindex="0"><div class="label">Skills</div><div class="hint">View badges</div></div>
-        <div class="menu-item" data-action="projects" tabindex="0"><div class="label">Projects</div><div class="hint">Show selected work</div></div>
-        <div class="menu-item" data-action="resume" tabindex="0"><div class="label">Resume</div><div class="hint">Download PDF</div></div>
-        <div class="menu-item" data-action="exit" tabindex="0"><div class="label">Exit</div><div class="hint">Close (no-op)</div></div>
+      <div class="menu-title"><h2>Portfolio Menu</h2></div>
+      <div class="menu">
+        <div class="menu-item"><span class="label">Projects</span><span class="hint">GitHub Links</span></div>
+        <div class="menu-item"><span class="label">Download CV</span><span class="hint"><a class="btn" href="Arman Aghighi Resume.pdf" target="_blank">Resume PDF</a></span></div>
+        <div class="menu-item"><span class="label">Socials</span><span class="hint">
+          <a class="btn" href="https://github.com/armanaghighi" target="_blank">GitHub</a>
+          <a class="btn" href="https://www.linkedin.com/in/armanaghighi" target="_blank">LinkedIn</a>
+          <a class="btn" href="https://twitter.com/armanaghighi" target="_blank">Twitter</a>
+        </span></div>
       </div>
-
-      <div class="small-row" style="margin-top:18px">
-        <div class="btn" id="open-github">Open GitHub</div>
-        <div class="btn" id="contact-me">Contact</div>
-      </div>
-
-      <footer>© <span id="year"></span> Arman Aghighi — Press Start</footer>
     </section>
   </main>
 </div>
 
-<!-- audio element for PS1 sound (you uploaded this file) -->
 <audio id="psAudio" src="psx.mp3" preload="auto"></audio>
 
 <script>
-/* ---------- Background particles (lightweight) ---------- */
-const canvas = document.getElementById('bgCanvas');
-const ctx = canvas.getContext('2d');
-let W = canvas.width = innerWidth, H = canvas.height = innerHeight;
-const particles = [];
-const PCOUNT = Math.max(40, Math.floor((W*H)/100000));
-function rand(min,max){return Math.random()*(max-min)+min}
-for(let i=0;i<PCOUNT;i++) particles.push({x:rand(0,W),y:rand(0,H),r:rand(0.7,2.8),vx:rand(-0.25,0.5),vy:rand(-0.15,0.35),h:rand(180,300)});
-function resize(){W=canvas.width=innerWidth;H=canvas.height=innerHeight}
-window.addEventListener('resize',resize);
-function drawBG(){
-  ctx.clearRect(0,0,W,H);
-  const g = ctx.createLinearGradient(0,0,W,H);
-  g.addColorStop(0,'rgba(5,3,10,0.2)'); g.addColorStop(1,'rgba(2,4,16,0.4)');
-  ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
-  for(let p of particles){
-    p.x+=p.vx; p.y+=p.vy;
-    if(p.x>W+20)p.x=-20; if(p.x<-20)p.x=W+20;
-    if(p.y>H+20)p.y=-20; if(p.y<-20)p.y=H+20;
-    const rad = p.r*7;
-    const grad = ctx.createRadialGradient(p.x,p.y,1,p.x,p.y,rad);
-    grad.addColorStop(0,`hsla(${p.h},90%,65%,0.11)`);
-    grad.addColorStop(1,'rgba(0,0,0,0)');
-    ctx.fillStyle=grad; ctx.beginPath(); ctx.arc(p.x,p.y,rad,0,Math.PI*2); ctx.fill();
-    ctx.fillStyle = `hsla(${p.h},90%,65%,0.95)`; ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fill();
-  }
-  requestAnimationFrame(drawBG);
-}
-drawBG();
-
-/* ---------- CRT noise for splash ---------- */
-const crt = document.getElementById('crt');
-const cctx = crt.getContext('2d');
-function crtLoop(){
-  const w = crt.width, h = crt.height;
-  cctx.clearRect(0,0,w,h);
-  const id = cctx.createImageData(w,h);
-  for(let i=0;i<id.data.length;i+=4){
-    const v = (Math.random()*40)|0;
-    id.data[i]=v; id.data[i+1]=v; id.data[i+2]=v; id.data[i+3]=20;
-  }
-  cctx.putImageData(id,0,0);
-  requestAnimationFrame(crtLoop);
-}
-crtLoop();
-
-/* ---------- WebAudio blips (hover/select) ---------- */
-const AudioCtx = window.AudioContext || window.webkitAudioContext;
-const audioCtx = new AudioCtx();
-function blip(type='hover'){
-  const t = audioCtx.currentTime;
-  const o = audioCtx.createOscillator();
-  const g = audioCtx.createGain();
-  o.connect(g); g.connect(audioCtx.destination);
-  if(type==='hover'){
-    o.type='triangle'; o.frequency.setValueAtTime(520, t);
-    g.gain.setValueAtTime(0.0001,t); g.gain.linearRampToValueAtTime(0.08,t+0.001); g.gain.exponentialRampToValueAtTime(0.0001,t+0.12);
-    o.start(t); o.stop(t+0.13);
-  } else {
-    o.type='sawtooth'; o.frequency.setValueAtTime(320, t);
-    g.gain.setValueAtTime(0.0001,t); g.gain.linearRampToValueAtTime(0.22,t+0.001); g.gain.exponentialRampToValueAtTime(0.0001,t+0.26);
-    o.start(t); o.stop(t+0.28);
-  }
-}
-
-/* ---------- Splash -> Menu flow ---------- */
+// ---------- Splash Animation ----------
 const splash = document.getElementById('splash');
 const main = document.getElementById('main');
 const psAudio = document.getElementById('psAudio');
+const logo1 = document.getElementById('logo1');
+const logo2 = document.getElementById('logo2');
 let splashSkipped = false;
 
-// Play psx.mp3 on first user gesture (necessary in many browsers)
-function startIntroOnce(){
+function fadeIn(el,dur=600){ el.style.transition=`opacity ${dur}ms ease, transform ${dur}ms ease`; el.style.opacity=1; el.style.transform='scale(1)'; }
+function fadeOut(el,dur=500){ el.style.transition=`opacity ${dur}ms ease, transform ${dur}ms ease`; el.style.opacity=0; el.style.transform='scale(1.1)'; }
+
+function startSplash(){
   if(splashSkipped) return;
-  // resume audio context (required on some browsers)
-  if(audioCtx.state === 'suspended'){ audioCtx.resume().catch(()=>{}) }
-  // try to play the ps audio
-  psAudio.currentTime = 0;
-  const playPromise = psAudio.play();
-  // browsers may block - ignore errors gracefully
-  if(playPromise && typeof playPromise.then === 'function'){
-    playPromise.catch(()=>{/* autoplay blocked; user gesture required — splash will still show until user interacts */});
-  }
-  // animate logo: simple scale & pulse
-  const logo = document.getElementById('ps-logo');
-  logo.style.transform = 'scale(0.92) translateY(-6px)';
-  setTimeout(()=>{ logo.style.transition = 'transform 0.45s cubic-bezier(.2,.9,.2,1), opacity 0.45s'; logo.style.transform = 'scale(1.18)'; logo.style.opacity = '1'; }, 100);
-  // after sound ends, transition to menu
-  psAudio.onended = ()=>{ if(!splashSkipped) transitionToMenu(); };
-  // safety: if audio doesn't load/longer than 5.5s, go to menu anyway
-  setTimeout(()=>{ if(!splashSkipped) transitionToMenu(); }, 5500);
   splashSkipped = true;
+  if(psAudio){ psAudio.currentTime=0; psAudio.play().catch(()=>{}); }
+
+  fadeIn(logo1,800);
+  setTimeout(()=>{
+    fadeOut(logo1,500);
+    setTimeout(()=>{
+      fadeIn(logo2,800);
+    },500);
+  },1200);
+
+  setTimeout(()=>{
+    fadeOut(logo2,500);
+    setTimeout(()=>{
+      splash.style.display='none';
+      main.style.display='grid';
+      main.setAttribute('aria-hidden','false');
+    },500);
+  },3000);
 }
 
-// allow click/key to start immediately and also allow skip
-function skipSplashAndGo(){
-  if(!splashSkipped){
-    // try play quickly to trigger autoplay permissions/resume
-    try{ psAudio.play().catch(()=>{}); }catch(e){}
-    splashSkipped = true;
-  }
-  transitionToMenu();
+function skipSplash(){
+  if(!splashSkipped) startSplash();
+  splash.style.display='none';
+  main.style.display='grid';
+  main.setAttribute('aria-hidden','false');
 }
 
-// transition function
-function transitionToMenu(){
-  // hide splash
-  splash.classList.add('fade-out');
-  setTimeout(()=>{ splash.style.display='none'; main.style.display='grid'; main.setAttribute('aria-hidden','false'); document.getElementById('menu').querySelectorAll('.menu-item')[0].classList.add('active'); initMenu(); }, 700);
-}
-
-// hook user first gesture
-function firstGestureListener(){
-  function once(){ document.removeEventListener('pointerdown', once); document.removeEventListener('keydown', once); startIntroOnce(); }
-  document.addEventListener('pointerdown', once, {passive:true}); document.addEventListener('keydown', once, {passive:true});
-  // clicking on splash also starts or skips
-  splash.addEventListener('click', ()=>{ startIntroOnce(); setTimeout(()=>{ skipSplashAndGo(); }, 700); }, {passive:true});
-}
-firstGestureListener();
-
-/* ---------- Menu interactions ---------- */
-let menuIndex = 0;
-const menuItems = Array.from(document.querySelectorAll('.menu-item'));
-function setActive(i){
-  menuItems.forEach((it,idx)=>{ it.classList.toggle('active', idx===i); if(idx===i) it.focus(); });
-}
-function initMenu(){
-  setActive(menuIndex);
-  menuItems.forEach((it,idx)=>{
-    it.addEventListener('mouseenter', ()=>{ menuIndex = idx; setActive(menuIndex); blip('hover'); });
-    it.addEventListener('click', ()=>{ blip('select'); activate(it.dataset.action); });
-  });
-  document.addEventListener('keydown', (e)=>{
-    if(main.style.display === 'none') return;
-    if(e.key === 'ArrowDown'){ menuIndex = (menuIndex+1) % menuItems.length; setActive(menuIndex); blip('hover'); e.preventDefault(); }
-    else if(e.key === 'ArrowUp'){ menuIndex = (menuIndex-1 + menuItems.length) % menuItems.length; setActive(menuIndex); blip('hover'); e.preventDefault(); }
-    else if(e.key === 'Enter'){ blip('select'); activate(menuItems[menuIndex].dataset.action); }
-  });
-  document.getElementById('open-github').addEventListener('click', ()=>{ blip('select'); window.open('https://github.com/armanaghighi','_blank') });
-  document.getElementById('contact-me').addEventListener('click', ()=>{ blip('select'); window.location.href='mailto:arman@example.com' });
-}
-
-/* actions */
-function activate(action){
-  if(action==='start'){ openSection('projects'); }
-  else if(action==='skills'){ openSection('skills'); }
-  else if(action==='projects'){ openSection('projects'); }
-  else if(action==='resume'){ // open exact resume file user uploaded
-    window.open('Arman Aghighi Resume.pdf','_blank');
-  } else if(action==='exit'){
-    const card = document.getElementById('card'); card.style.transition='transform 0.5s ease, opacity 0.6s'; card.style.transform='translateY(20px) scale(0.98)'; card.style.opacity='0'; setTimeout(()=>{ card.style.transform='none'; card.style.opacity='1' }, 700);
-  }
-}
-
-/* quick toast overlay */
-function openSection(name){
-  const panel = document.querySelector('.menu-wrap');
-  panel.style.transition='box-shadow 0.32s ease, border 0.32s ease';
-  panel.style.boxShadow='0 40px 80px rgba(138,92,255,0.08)';
-  setTimeout(()=>{ panel.style.boxShadow='none' }, 700);
-
-  const toast = document.createElement('div');
-  toast.style.position='fixed'; toast.style.left='50%'; toast.style.transform='translateX(-50%)'; toast.style.bottom='60px';
-  toast.style.background='linear-gradient(90deg, rgba(122,252,255,0.06), rgba(138,92,255,0.06))'; toast.style.padding='12px 18px'; toast.style.borderRadius='10px';
-  toast.style.boxShadow='0 12px 30px rgba(0,0,0,0.6)'; toast.style.color='#ddf'; toast.style.fontWeight='700';
-  toast.textContent = (name==='skills'?'Showing skills...': (name==='projects'?'Opening selected projects...':'Starting portfolio...'));
-  document.body.appendChild(toast);
-  setTimeout(()=>{ toast.style.transition='opacity 0.4s ease'; toast.style.opacity='0'; setTimeout(()=>toast.remove(),420) }, 1400);
-
-  if(name==='projects'){ setTimeout(()=>{ window.open('https://github.com/armanaghighi','_blank'); }, 900) }
-}
-
-/* ---------- small helpers ---------- */
-document.getElementById('year').textContent = new Date().getFullYear();
-
-/* avatar auto-replace if profile.jpg exists */
-(function tryLoadAvatar(){
-  const img = new Image();
-  img.onload = ()=>{ const av = document.getElementById('avatar'); av.textContent=''; av.style.background='transparent'; img.style.width='100%'; img.style.height='100%'; img.style.objectFit='cover'; img.style.borderRadius='50%'; av.appendChild(img); }
-  img.onerror = ()=>{};
-  img.src = 'profile.jpg';
-})();
+document.addEventListener('keydown',startSplash,{once:true});
+document.addEventListener('click',startSplash,{once:true});
+splash.addEventListener('click',skipSplash);
 </script>
 </body>
 </html>

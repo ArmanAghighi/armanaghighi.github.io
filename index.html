@@ -24,9 +24,11 @@ html,body{height:100%;margin:0;background:linear-gradient(180deg,#04020a 0%, #07
 .splash .center{
   text-align:center; transform:translateY(0);
 }
+/* لوگوها فول‌اسکرین */
 .splash img{
-  max-width:220px; display:block; margin:0 auto;
+  display:block; margin:0 auto;
   opacity:0; transform:scale(0.8); transition:opacity 0.6s ease, transform 0.6s ease;
+  width:100vw; height:100vh; object-fit:cover;
 }
 
 /* scanlines + CRT overlay */
@@ -157,14 +159,6 @@ const logo2 = document.getElementById('logo2');
 const startOverlay = document.getElementById('startOverlay');
 let splashSkipped = false;
 
-// لوگوها فول‌اسکرین
-logo1.style.width = "100vw";
-logo1.style.height = "100vh";
-logo1.style.objectFit = "cover";
-logo2.style.width = "100vw";
-logo2.style.height = "100vh";
-logo2.style.objectFit = "cover";
-
 function fadeIn(el,dur=600){ el.style.transition=`opacity ${dur}ms ease, transform ${dur}ms ease`; el.style.opacity=1; el.style.transform='scale(1)'; }
 function fadeOut(el,dur=500){ el.style.transition=`opacity ${dur}ms ease, transform ${dur}ms ease`; el.style.opacity=0; el.style.transform='scale(1.05)'; }
 
@@ -177,9 +171,7 @@ function startSplash(){
   fadeIn(logo1,800);
   setTimeout(()=>{
     fadeOut(logo1,500);
-    setTimeout(()=>{
-      fadeIn(logo2,800);
-    },500);
+    setTimeout(()=>{ fadeIn(logo2,800); },500);
   },6000);
 
   // پایان لوگو دوم بعد 9 ثانیه

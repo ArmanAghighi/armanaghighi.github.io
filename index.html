@@ -179,7 +179,45 @@
             margin-right: 5px;
         }
 
-        /* CONTACT & PRESENCE SECTION */
+        /* RESUME SECTION */
+        .resume-section {
+            background: rgba(0, 255, 255, 0.03);
+            border: 1px dashed rgba(0, 255, 255, 0.2);
+            padding: 3rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .resume-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .resume-btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: transparent;
+            color: #00ffff;
+            border: 1px solid #00ffff;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .resume-btn:hover {
+            background: #00ffff;
+            color: #050505;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+        }
+
+        /* CONTACT GRID */
         .contact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -236,8 +274,7 @@
 
         @media (max-width: 600px) {
             .hero { padding: 0 1rem; }
-            .projects-grid { grid-template-columns: 1fr; }
-            .contact-grid { grid-template-columns: 1fr; }
+            .resume-section { padding: 2rem 1rem; }
         }
     </style>
 </head>
@@ -294,6 +331,16 @@
                         <li>Addressables</li>
                     </ul>
                 </div>
+            </div>
+        </section>
+
+        <section id="resume">
+            <div class="section-label">Technical Background</div>
+            <div class="resume-section">
+                <div class="resume-icon">📄</div>
+                <h3 style="color: white; letter-spacing: 1px;">Full Technical Resume</h3>
+                <p style="color: #888; max-width: 500px;">Download my comprehensive CV including detailed project breakdowns, academic presentations, and full technical stack proficiency.</p>
+                <a href="resume.pdf" download="Arman_Aghighi_Resume.pdf" class="resume-btn">Download PDF</a>
             </div>
         </section>
 

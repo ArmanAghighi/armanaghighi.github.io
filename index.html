@@ -6,17 +6,11 @@
 <title>Arman Aghighi Portfolio</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+/* ---------- RESET ---------- */
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background:#050505; color:#e0e0e0; }
 
-html,body{
-    width:100%;
-    height:100%;
-    font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
-    background:#050505;
-    color:#e0e0e0;
-}
-
-/* ===== MODERN BACKGROUND ===== */
+/* ---------- MODERN BACKGROUND ---------- */
 .background{
     position:fixed;
     inset:0;
@@ -41,23 +35,18 @@ html,body{
     to{background-position:200px 200px,-200px -200px,0 0,0 0,0 0}
 }
 
-/* ===== GATE ===== */
+/* ---------- GATE ---------- */
+#gateCheckbox{ display:none; }
+
 #gate{
     position:fixed;
     inset:0;
-    background:#050505;
     display:flex;
     flex-direction:column;
     align-items:center;
     justify-content:center;
-    z-index:9999;
+    background:#050505;
     transition:opacity .8s ease, transform .8s ease;
-}
-
-#gate.fade-out{
-    opacity:0;
-    transform:scale(1.1);
-    pointer-events:none;
 }
 
 #gate h1{
@@ -85,20 +74,26 @@ html,body{
     box-shadow:0 0 25px rgba(0,255,255,.5);
 }
 
-/* ===== MAIN ===== */
+/* ---------- MAIN ---------- */
 #main{
-    display:none;
     opacity:0;
     transform:scale(.97);
     transition:opacity .8s ease, transform .8s ease;
 }
 
-#main.show{
-    display:block;
+/* ---------- TRIGGER CSS ---------- */
+#gateCheckbox:checked ~ #gate {
+    opacity:0;
+    transform:scale(1.1);
+    pointer-events:none;
+}
+
+#gateCheckbox:checked ~ #main {
     opacity:1;
     transform:scale(1);
 }
 
+/* ---------- LAYOUT ---------- */
 .container{
     max-width:1100px;
     margin:0 auto;
@@ -106,7 +101,7 @@ html,body{
 }
 
 .hero{
-    height:100vh;
+    min-height:100vh;
     display:flex;
     flex-direction:column;
     justify-content:center;
@@ -156,19 +151,29 @@ h1{
     border-radius:50%;
     box-shadow:0 0 10px #00ff88;
 }
-/* ===== SUMMARY SECTION ===== */
+
+/* ---------- SUMMARY SECTION ---------- */
 .summary{
-    padding:6rem 0 8rem;
-    display:flex;
-    justify-content:center;
+    min-height:100vh;
+    padding:6rem 2rem;
+    opacity:0;
+    transform:translateY(60px) scale(.95);
+    transition:opacity .8s ease, transform .8s ease;
+}
+
+#gateCheckbox:checked ~ #main .summary{
+    opacity:1;
+    transform:translateY(0) scale(1);
 }
 
 .summary-box{
     max-width:900px;
+    margin:0 auto;
     background:rgba(255,255,255,.03);
     border:1px solid rgba(0,255,255,.15);
     padding:3rem;
     backdrop-filter: blur(6px);
+    text-align:center;
 }
 
 .summary-title{
@@ -194,6 +199,7 @@ h1{
 .summary-item{
     border-left:3px solid #00ffff;
     padding-left:1rem;
+    text-align:left;
 }
 
 .summary-item h4{
@@ -210,16 +216,18 @@ h1{
 </head>
 
 <body>
-
 <div class="background"></div>
 
-<!-- ===== GATE ===== -->
+<!-- ---------- CHECKBOX HACK ---------- -->
+<input type="checkbox" id="gateCheckbox">
+
+<!-- ---------- GATE ---------- -->
 <div id="gate">
     <h1>Arman Aghighi</h1>
-    <button id="continueBtn">Continue</button>
+    <label for="gateCheckbox" id="continueBtn">Continue</label>
 </div>
 
-<!-- ===== MAIN ===== -->
+<!-- ---------- MAIN ---------- -->
 <div id="main">
     <div class="container">
         <header class="hero">
@@ -242,60 +250,38 @@ h1{
                 <span class="dot"></span>
             </div>
         </header>
+
         <section class="summary">
-    <div class="summary-box">
+            <div class="summary-box">
+                <div class="summary-title">Summary</div>
+                <p class="summary-text">
+                    Unity-focused Game Developer with strong emphasis on clean architecture,
+                    gameplay systems and technical design. Experienced in building scalable
+                    systems that separate core logic from engine dependencies.
+                </p>
 
-        <div class="summary-title">Summary</div>
-
-        <p class="summary-text">
-            Unity-focused Game Developer with strong emphasis on clean architecture,
-            gameplay systems and technical design. Experienced in building scalable
-            systems that separate core logic from engine dependencies.
-        </p>
-
-        <div class="summary-grid">
-            <div class="summary-item">
-                <h4>Core Focus</h4>
-                <p>Gameplay systems, tools, architecture</p>
+                <div class="summary-grid">
+                    <div class="summary-item">
+                        <h4>Core Focus</h4>
+                        <p>Gameplay systems, tools, architecture</p>
+                    </div>
+                    <div class="summary-item">
+                        <h4>Engine</h4>
+                        <p>Unity (C#, ScriptableObjects, Addressables)</p>
+                    </div>
+                    <div class="summary-item">
+                        <h4>Approach</h4>
+                        <p>Decoupled logic, testable systems</p>
+                    </div>
+                    <div class="summary-item">
+                        <h4>Interest</h4>
+                        <p>Procedural generation & adaptive gameplay</p>
+                    </div>
+                </div>
             </div>
-
-            <div class="summary-item">
-                <h4>Engine</h4>
-                <p>Unity (C#, ScriptableObjects, Addressables)</p>
-            </div>
-
-            <div class="summary-item">
-                <h4>Approach</h4>
-                <p>Decoupled logic, testable systems</p>
-            </div>
-
-            <div class="summary-item">
-                <h4>Interest</h4>
-                <p>Procedural generation & adaptive gameplay</p>
-            </div>
-        </div>
-
-    </div>
         </section>
     </div>
 </div>
 
-<script>
-const gate = document.getElementById("gate");
-const main = document.getElementById("main");
-
-document.getElementById("continueBtn").onclick = () => {
-    gate.classList.add("fade-out");
-    setTimeout(() => {
-        gate.remove();
-        main.classList.add("show");
-    }, 700);
-};
-</script>
-
 </body>
 </html>
-
-
-
-

@@ -292,61 +292,54 @@ h1{
 }
 /* ===== PROJECTS SECTION ===== */
 .projects-section{
-    padding:6rem 2rem 8rem 2rem;
+    padding:6rem 0;
     display:flex;
     flex-direction:column;
     align-items:center;
-    gap:3rem;
-}
-
-.projects-title{
-    color:#00ffff;
-    font-size:1.2rem;
-    text-transform:uppercase;
-    letter-spacing:3px;
-    margin-bottom:2rem;
-}
-
-.projects-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
     gap:2rem;
-    width:100%;
-    max-width:1100px;
+}
+
+.projects-container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 2rem;
+    padding: 2rem 0;
 }
 
 .project-card{
+    display:flex;
+    flex-direction: column;
+    align-items: center;    
     background: rgba(255,255,255,0.03);
     border:1px solid rgba(0,255,255,.15);
-    backdrop-filter: blur(6px);
     padding:1rem;
-    cursor:pointer;
-    transition: transform .3s ease, box-shadow .3s ease;
+    backdrop-filter: blur(6px);
+    gap:1rem;               
 }
 
-.project-card:hover{
-    transform: translateY(-5px);
-    box-shadow:0 0 25px rgba(0,255,255,.5);
+.project-img{
+    width:150px; 
+    height:150px;
+    object-fit:cover;
+    border-radius:4px;
 }
 
-.project-img {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 6px; 
+.project-info{
+    display:flex;
+    flex-direction: column;
+    align-items: center; 
+    gap:.3rem;
 }
-
 .project-info h4{
     color:white;
     margin-bottom:0.5rem;
 }
 
-.project-info p{
-    color:#b0b0b0;
-    font-size:0.85rem;
-    margin-bottom:0.3rem;
+.project-info h4{
+    margin:0 0 .3rem 0;
+    color:#00ffff;
 }
+
 
 .project-info a{
     color:#00ffff;
@@ -356,6 +349,9 @@ h1{
 .project-info a:hover{
     text-decoration:underline;
 }
+
+/* Start HTML Code */
+
 </style>
 </head>
     <body>
@@ -455,34 +451,55 @@ h1{
                 </section>
                 <!-- ===== PROJECTS SECTION ===== -->
                 <section class="projects-section">
-                    <div class="projects-title">Projects</div>
-                    <div class="projects-grid">
+                    <div class="projects-container">
+                        <!-- Project Card -->        
                         <div class="project-card">
-                            <img src="SpaceShooter.jpg" alt="SpaceShooter Preview" class="project-img">
+                            <h4>SpaceShooter</h4>
+                            <img src="SpaceShooter.png" alt="SpaceShooter" class="project-img">
                             <div class="project-info">
-                                <h4>SpaceShooter</h4>
                                 <p><strong>Device:</strong> PC</p>
-                                <p><strong>Live Link:</strong> <a href="https://example.com/project1" target="_blank">Visit</a></p>
+                                <p><strong>Access Link:</strong> <a href="#">Demo</a></p>
                                 <p><strong>GitHub:</strong> <a href="https://github.com/ArmanAghighi/ArmanAghighi_SpaceShooter" target="_blank">Repo</a></p>
-                                <p><strong>Size:</strong> 120MB</p>
+                                <p><strong>Size:</strong> 50MB</p>
                             </div>
                         </div>
-
+                         <!-- Project Card -->        
                         <div class="project-card">
-                            <img src="project2-preview.jpg" alt="Project 2 Preview" class="project-img">
+                            <h4>DoodleJump</h4>
+                            <img src="DoodleJump.png" alt="DoodleJump" class="project-img">
                             <div class="project-info">
-                                <h4>Project Name 2</h4>
-                                <p><strong>Device:</strong> WebGL</p>
-                                <p><strong>Live Link:</strong> <a href="https://example.com/project2" target="_blank">Visit</a></p>
-                                <p><strong>GitHub:</strong> <a href="https://github.com/username/project2" target="_blank">Repo</a></p>
-                                <p><strong>Size:</strong> 85MB</p>
+                                <p><strong>Device:</strong> PC</p>
+                                <p><strong>Access Link:</strong> <a href="#">Demo</a></p>
+                                <p><strong>GitHub:</strong> <a href="#">Repo</a></p>
+                                <p><strong>Size:</strong> 50MB</p>
                             </div>
                         </div>
-                        <!-- Add more project cards similarly -->
+                         <!-- Project Card -->        
+                        <div class="project-card">
+                            <h4>SpaceShooter</h4>
+                            <img src="SpaceShooter.png" alt="SpaceShooter" class="project-img">
+                            <div class="project-info">
+                                <p><strong>Device:</strong> PC</p>
+                                <p><strong>Access Link:</strong> <a href="#">Demo</a></p>
+                                <p><strong>GitHub:</strong> <a href="#">Repo</a></p>
+                                <p><strong>Size:</strong> 50MB</p>
+                            </div>
+                        </div>
+                         <!-- Project Card -->        
+                        <div class="project-card">
+                            <h4>SpaceShooter</h4>
+                            <img src="SpaceShooter.png" alt="SpaceShooter" class="project-img">
+                            <div class="project-info">
+                                <p><strong>Device:</strong> PC</p>
+                                <p><strong>Access Link:</strong> <a href="#">Demo</a></p>
+                                <p><strong>GitHub:</strong> <a href="#">Repo</a></p>
+                                <p><strong>Size:</strong> 50MB</p>
+                            </div>
+                        </div>
+                        
                     </div>
                 </section>
             </div>
         </div>
     </body>
 </html>
-

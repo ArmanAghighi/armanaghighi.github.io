@@ -12,7 +12,6 @@ html,body{
     width:100%;
     height:100%;
     font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
-    background:#050505;
     color:#e0e0e0;
 }
 
@@ -48,7 +47,6 @@ html,body{
     justify-content:center;
     z-index:9999;
     transition:opacity .8s ease, transform .8s ease;
-    background:#050505;
 }
 
 #gate h1{
@@ -301,6 +299,16 @@ h1{
     gap:2rem;
 }
 
+.projects-box{
+    max-width:1100px;
+    width:100%;
+    background:rgba(255,255,255,.03);
+    border:1px solid rgba(0,255,255,.15);
+    padding:3rem;
+    backdrop-filter:blur(6px);
+    border-radius:20px;
+}
+
 .projects-container{
     display: grid;
     grid-template-columns: repeat(4, 1fr); 
@@ -509,52 +517,53 @@ h1{
                 </section>
                 <!-- ===== PROJECTS SECTION ===== -->
                 <section class="projects-section">
-                    <div class="projects-container">
-                        <!-- Project Card -->        
-                        <div class="project-card">
-                            <h4>Space Shooter</h4>
-                            <img src="SpaceShooter.png" alt="SpaceShooter" class="project-img">
-                            <div class="project-info">
-                                <p><strong>Device:</strong> PC</p>
-                                <p><strong>Access Link:</strong> <a href="#">Demo</a></p>
-                                <p><strong>GitHub:</strong> <a href="https://github.com/ArmanAghighi/ArmanAghighi_SpaceShooter" target="_blank">Repo</a></p>
-                                <p><strong>Size:</strong> 50MB</p>
+                    <div class="projects-box">
+                        <div class="projects-container">
+                            <!-- Project Card -->        
+                            <div class="project-card">
+                                <h4>Space Shooter</h4>
+                                <img src="SpaceShooter.png" alt="SpaceShooter" class="project-img">
+                                <div class="project-info">
+                                    <p><strong>Device:</strong> PC</p>
+                                    <p><strong>Access Link:</strong> <a href="#">Demo</a></p>
+                                    <p><strong>GitHub:</strong> <a href="https://github.com/ArmanAghighi/ArmanAghighi_SpaceShooter" target="_blank">Repo</a></p>
+                                    <p><strong>Size:</strong> 50MB</p>
+                                </div>
+                            </div>
+                            <!-- Project Card -->        
+                            <div class="project-card">
+                                <h4>Doodle Jump ++</h4>
+                                <img src="DoodleJump.png" alt="DoodleJump" class="project-img">
+                                <div class="project-info">
+                                    <p><strong>Device:</strong> PC</p>
+                                    <p><strong>Access Link:</strong> <a href="#">Demo</a></p>
+                                    <p><strong>GitHub:</strong> <a href="https://github.com/ArmanAghighi/ArmanAghighi_DoodleJump">Repo</a></p>
+                                    <p><strong>Size:</strong> 50MB</p>
+                                </div>
+                            </div>
+                            <!-- Project Card -->        
+                            <div class="project-card">
+                                <h4>Jungle Word</h4>
+                                <img src="JungleWord.png" alt="JungleWord" class="project-img">
+                                <div class="project-info">
+                                    <p><strong>Device:</strong> PC</p>
+                                    <p><strong>Access Link:</strong> <a href="#">Demo</a></p>
+                                    <p><strong>GitHub:</strong> <a href="https://github.com/ArmanAghighi/ArmanAghighi_AlphaBettySaga">Repo</a></p>
+                                    <p><strong>Size:</strong> 50MB</p>
+                                </div>
+                            </div>
+                            <!-- Project Card -->        
+                            <div class="project-card">
+                                <h4>Rock Paper Scissor</h4>
+                                <img src="RockPaperScissor.png" alt="RockPaperScissor" class="project-img">
+                                <div class="project-info">
+                                    <p><strong>Device:</strong> PC</p>
+                                    <p><strong>Access Link:</strong> <a href="#">Demo</a></p>
+                                    <p><strong>GitHub:</strong> <a href="#https://github.com/ArmanAghighi/Rock-Paper-Scissor">Repo</a></p>
+                                    <p><strong>Size:</strong> 50MB</p>
+                                </div>
                             </div>
                         </div>
-                         <!-- Project Card -->        
-                        <div class="project-card">
-                            <h4>Doodle Jump ++</h4>
-                            <img src="DoodleJump.png" alt="DoodleJump" class="project-img">
-                            <div class="project-info">
-                                <p><strong>Device:</strong> PC</p>
-                                <p><strong>Access Link:</strong> <a href="#">Demo</a></p>
-                                <p><strong>GitHub:</strong> <a href="https://github.com/ArmanAghighi/ArmanAghighi_DoodleJump">Repo</a></p>
-                                <p><strong>Size:</strong> 50MB</p>
-                            </div>
-                        </div>
-                         <!-- Project Card -->        
-                        <div class="project-card">
-                            <h4>Jungle Word</h4>
-                            <img src="JungleWord.png" alt="JungleWord" class="project-img">
-                            <div class="project-info">
-                                <p><strong>Device:</strong> PC</p>
-                                <p><strong>Access Link:</strong> <a href="#">Demo</a></p>
-                                <p><strong>GitHub:</strong> <a href="https://github.com/ArmanAghighi/ArmanAghighi_AlphaBettySaga">Repo</a></p>
-                                <p><strong>Size:</strong> 50MB</p>
-                            </div>
-                        </div>
-                         <!-- Project Card -->        
-                        <div class="project-card">
-                            <h4>Rock Paper Scissor</h4>
-                            <img src="RockPaperScissor.png" alt="RockPaperScissor" class="project-img">
-                            <div class="project-info">
-                                <p><strong>Device:</strong> PC</p>
-                                <p><strong>Access Link:</strong> <a href="#">Demo</a></p>
-                                <p><strong>GitHub:</strong> <a href="#https://github.com/ArmanAghighi/Rock-Paper-Scissor">Repo</a></p>
-                                <p><strong>Size:</strong> 50MB</p>
-                            </div>
-                        </div>
-                        
                     </div>
                 </section>
                 <!-- ===== CONTACT SECTION ===== -->

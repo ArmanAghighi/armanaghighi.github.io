@@ -6,11 +6,18 @@
 <title>Arman Aghighi Portfolio</title>
 
 <style>
-/* ---------- RESET ---------- */
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background:#050505; color:#e0e0e0; }
+*{margin:0;padding:0;box-sizing:border-box}
 
-/* ---------- MODERN BACKGROUND ---------- */
+html,body{
+    width:100%;
+    height:100%;
+    font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    background:#050505;
+    color:#e0e0e0;
+    overflow:hidden;
+}
+
+/* ===== MODERN BACKGROUND ===== */
 .background{
     position:fixed;
     inset:0;
@@ -35,17 +42,18 @@ body { font-family:'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background:
     to{background-position:200px 200px,-200px -200px,0 0,0 0,0 0}
 }
 
-/* ---------- GATE ---------- */
-#gateCheckbox{ display:none; }
+/* ===== GATE & CONTINUE BUTTON ===== */
+#gateCheckbox { display:none; }
 
 #gate{
     position:fixed;
     inset:0;
+    background:#050505;
     display:flex;
     flex-direction:column;
     align-items:center;
     justify-content:center;
-    background:#050505;
+    z-index:9999;
     transition:opacity .8s ease, transform .8s ease;
 }
 
@@ -74,26 +82,26 @@ body { font-family:'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background:
     box-shadow:0 0 25px rgba(0,255,255,.5);
 }
 
-/* ---------- MAIN ---------- */
+/* ===== MAIN CONTENT ===== */
 #main{
     opacity:0;
-    transform:scale(.97);
+    transform:scale(.97) translateY(20px);
     transition:opacity .8s ease, transform .8s ease;
+    pointer-events:none;
 }
 
-/* ---------- TRIGGER CSS ---------- */
-#gateCheckbox:checked ~ #gate {
+#gateCheckbox:checked ~ #main{
+    opacity:1;
+    transform:scale(1) translateY(0);
+    pointer-events:auto;
+}
+
+#gateCheckbox:checked ~ #gate{
     opacity:0;
     transform:scale(1.1);
     pointer-events:none;
 }
 
-#gateCheckbox:checked ~ #main {
-    opacity:1;
-    transform:scale(1);
-}
-
-/* ---------- LAYOUT ---------- */
 .container{
     max-width:1100px;
     margin:0 auto;
@@ -101,7 +109,7 @@ body { font-family:'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background:
 }
 
 .hero{
-    min-height:100vh;
+    height:100vh;
     display:flex;
     flex-direction:column;
     justify-content:center;
@@ -152,28 +160,19 @@ h1{
     box-shadow:0 0 10px #00ff88;
 }
 
-/* ---------- SUMMARY SECTION ---------- */
+/* ===== SUMMARY SECTION ===== */
 .summary{
-    min-height:100vh;
-    padding:6rem 2rem;
-    opacity:0;
-    transform:translateY(60px) scale(.95);
-    transition:opacity .8s ease, transform .8s ease;
-}
-
-#gateCheckbox:checked ~ #main .summary{
-    opacity:1;
-    transform:translateY(0) scale(1);
+    padding:6rem 0 8rem;
+    display:flex;
+    justify-content:center;
 }
 
 .summary-box{
     max-width:900px;
-    margin:0 auto;
     background:rgba(255,255,255,.03);
     border:1px solid rgba(0,255,255,.15);
     padding:3rem;
     backdrop-filter: blur(6px);
-    text-align:center;
 }
 
 .summary-title{
@@ -199,7 +198,6 @@ h1{
 .summary-item{
     border-left:3px solid #00ffff;
     padding-left:1rem;
-    text-align:left;
 }
 
 .summary-item h4{
@@ -214,20 +212,18 @@ h1{
 }
 </style>
 </head>
-
 <body>
+
 <div class="background"></div>
 
-<!-- ---------- CHECKBOX HACK ---------- -->
+<!-- ===== GATE ===== -->
 <input type="checkbox" id="gateCheckbox">
-
-<!-- ---------- GATE ---------- -->
 <div id="gate">
     <h1>Arman Aghighi</h1>
     <label for="gateCheckbox" id="continueBtn">Continue</label>
 </div>
 
-<!-- ---------- MAIN ---------- -->
+<!-- ===== MAIN ===== -->
 <div id="main">
     <div class="container">
         <header class="hero">
@@ -238,9 +234,9 @@ h1{
             <div class="hero-title">Game Developer | Unity | Gameplay & Systems</div>
 
             <p class="hero-description">
-                Building scalable, maintainable game architectures with decoupled
-                <span class="highlight">C# logic</span>,
-                <span class="highlight">core Unity gameplay</span> and
+                Building scalable, maintainable game architectures with decoupled<br>
+                <span class="highlight">C# logic</span>,<br>
+                <span class="highlight">core Unity gameplay</span> and<br>
                 <span class="highlight">Unity game design tools</span>.
             </p>
 
@@ -259,7 +255,6 @@ h1{
                     gameplay systems and technical design. Experienced in building scalable
                     systems that separate core logic from engine dependencies.
                 </p>
-
                 <div class="summary-grid">
                     <div class="summary-item">
                         <h4>Core Focus</h4>

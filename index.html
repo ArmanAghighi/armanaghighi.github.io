@@ -47,13 +47,13 @@ html,body{
 #gate{
     position:fixed;
     inset:0;
-    background:#050505;
     display:flex;
     flex-direction:column;
     align-items:center;
     justify-content:center;
     z-index:9999;
     transition:opacity .8s ease, transform .8s ease;
+    background:#050505;
 }
 
 #gate h1{
@@ -109,13 +109,27 @@ html,body{
     padding:0 2rem;
 }
 
+/* ===== HERO BOX ===== */
+.hero-box{
+    width:100%;
+    max-width:900px;
+    padding:3rem;
+    background: rgba(255,255,255,0.03);
+    border:1px solid rgba(0,255,255,.15);
+    backdrop-filter: blur(6px);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    margin:4rem auto 2rem auto;
+}
+
 .hero{
-    height:100vh;
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
     text-align:center;
+    width:100%;
 }
 
 .name-container{
@@ -211,6 +225,56 @@ h1{
     font-size:.85rem;
     color:#999;
 }
+
+/* ===== RESUME SECTION ===== */
+.resume-section{
+    padding:6rem 0 8rem;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+
+.resume-title{
+    color:#00ffff;
+    font-size:1rem;
+    text-transform:uppercase;
+    letter-spacing:3px;
+    margin-bottom:2rem;
+}
+
+.resume-actions{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:1.5rem;
+    margin-bottom:3rem;
+}
+
+.download-btn{
+    padding:1rem 2rem;
+    background:transparent;
+    color:#00ffff;
+    border:1px solid #00ffff;
+    text-transform:uppercase;
+    cursor:pointer;
+    transition: all .3s ease;
+    font-size:0.9rem;
+}
+
+.download-btn:hover{
+    background:#00ffff;
+    color:#050505;
+    box-shadow:0 0 25px rgba(0,255,255,.5);
+}
+
+.resume-preview{
+    width:100%;
+    max-width:900px;
+    height:500px;
+    border:1px solid rgba(0,255,255,.15);
+    backdrop-filter: blur(6px);
+}
 </style>
 </head>
 <body>
@@ -228,23 +292,25 @@ h1{
 <div id="main">
     <div class="container">
         <header class="hero">
-            <div class="name-container">
-                <h1>Arman Aghighi Portfolio</h1>
-            </div>
+            <div class="hero-box">
+                <div class="name-container">
+                    <h1>Arman Aghighi Portfolio</h1>
+                </div>
 
-            <div class="hero-title">Game Developer | Unity | Gameplay & Systems</div>
+                <div class="hero-title">Game Developer | Unity | Gameplay & Systems</div>
 
-            <p class="hero-description">
-                Building scalable, maintainable game architectures with decoupled<br>
-                <span class="highlight">C# logic</span>,<br>
-                <span class="highlight">core Unity gameplay</span> and<br>
-                <span class="highlight">Unity game design tools</span>.
-            </p>
+                <p class="hero-description">
+                    Building scalable, maintainable game architectures with decoupled<br>
+                    <span class="highlight">C# logic</span>,<br>
+                    <span class="highlight">core Unity gameplay</span> and<br>
+                    <span class="highlight">Unity game design tools</span>.
+                </p>
 
-            <div class="availability-badge">
-                <span class="dot"></span>
-                Available for technical opportunities and open work opportunity
-                <span class="dot"></span>
+                <div class="availability-badge">
+                    <span class="dot"></span>
+                    Available for technical opportunities and open work opportunity
+                    <span class="dot"></span>
+                </div>
             </div>
         </header>
 
@@ -259,27 +325,34 @@ h1{
                 <div class="summary-grid">
                     <div class="summary-item">
                         <h4>Core Focus</h4>
-                        <p>Gameplay systems, tools, architecture</p>
+                        <p>Gameplay systems, Engine Tools, Architectures, Design Patterns, UI/UX</p>
                     </div>
                     <div class="summary-item">
-                        <h4>Engine</h4>
-                        <p>Unity (C#, ScriptableObjects, Addressables)</p>
+                        <h4>Unity Engine</h4>
+                        <p>C#, ScriptableObjects, Addressables, AugmentedReality, Android & WebGL</p>
                     </div>
                     <div class="summary-item">
                         <h4>Approach</h4>
-                        <p>Decoupled logic, testable systems</p>
+                        <p>Decoupled Logic, Testable Systems, Device Optimization, Build Setting</p>
                     </div>
                     <div class="summary-item">
                         <h4>Interest</h4>
-                        <p>Procedural generation & adaptive gameplay</p>
+                        <p>Procedural Generation & Adaptive Gameplay, Level Generator</p>
                     </div>
                 </div>
             </div>
+        </section>
+
+        <!-- ===== RESUME SECTION ===== -->
+        <section class="resume-section">
+            <div class="resume-title">Resume</div>
+            <div class="resume-actions">
+                <a href="ArmanAghighi_Resume.pdf" download class="download-btn">Download Resume</a>
+            </div>
+            <iframe src="ArmanAghighi_Resume.pdf" class="resume-preview"></iframe>
         </section>
     </div>
 </div>
 
 </body>
 </html>
-
-

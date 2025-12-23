@@ -88,7 +88,7 @@
 
         .highlight { color: #ffffff; font-weight: 500; }
 
-        /* PROJECTS SECTION */
+        /* SECTION HEADERS */
         .section-label {
             display: flex;
             align-items: center;
@@ -98,6 +98,7 @@
             letter-spacing: 3px;
             font-size: 0.9rem;
             margin-bottom: 3rem;
+            margin-top: 4rem;
         }
 
         .section-label::after {
@@ -107,11 +108,11 @@
             background: linear-gradient(90deg, #00ffff, transparent);
         }
 
+        /* PROJECTS GRID */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
-            padding-bottom: 5rem;
         }
 
         .project-card {
@@ -120,6 +121,8 @@
             padding: 2rem;
             position: relative;
             transition: transform 0.3s ease, border-color 0.3s ease;
+            display: flex;
+            flex-direction: column;
         }
 
         .project-card:hover {
@@ -144,6 +147,7 @@
             text-transform: uppercase;
             margin-bottom: 1rem;
             display: inline-block;
+            align-self: flex-start;
         }
 
         .project-card p {
@@ -157,6 +161,9 @@
             display: flex;
             flex-wrap: wrap;
             gap: 0.75rem;
+            margin-top: auto;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .tech-list li {
@@ -172,16 +179,65 @@
             margin-right: 5px;
         }
 
-        /* STATS OVERLAY FOR PROJECTS */
-        .project-meta {
-            margin-top: auto;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        /* CONTACT & PRESENCE SECTION */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            padding-bottom: 8rem;
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            background: rgba(0, 255, 255, 0.03);
+            border-color: rgba(0, 255, 255, 0.4);
+        }
+
+        .contact-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: #00ffff;
+            letter-spacing: 1.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-value {
+            font-size: 1.1rem;
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        .availability-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: #00ff88;
+        }
+
+        .dot {
+            height: 8px;
+            width: 8px;
+            background-color: #00ff88;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 8px #00ff88;
         }
 
         @media (max-width: 600px) {
             .hero { padding: 0 1rem; }
             .projects-grid { grid-template-columns: 1fr; }
+            .contact-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -197,6 +253,9 @@
             <p class="hero-description">
                 Building scalable, maintainable game architectures with a focus on <span class="highlight">decoupled C# logic</span> and <span class="highlight">procedural generation</span>. University-level background in dynamic gameplay design based on player ability.
             </p>
+            <div class="availability-badge">
+                <span class="dot"></span> Available for technical opportunities
+            </div>
         </header>
 
         <section id="projects">
@@ -207,52 +266,59 @@
                     <span class="project-tag">Academic Thesis</span>
                     <h3>Dynamic Gameplay Generation</h3>
                     <p>Design and implementation of a system in Unity that uses procedural generation to adjust gameplay based on player ability and play style.</p>
-                    <div class="project-meta">
-                        <ul class="tech-list">
-                            <li>Unity</li>
-                            <li>Procedural Generation</li>
-                            <li>Adaptive Systems</li>
-                        </ul>
-                    </div>
+                    <ul class="tech-list">
+                        <li>Unity</li>
+                        <li>Procedural Generation</li>
+                        <li>Adaptive Systems</li>
+                    </ul>
                 </div>
 
                 <div class="project-card">
                     <span class="project-tag">Core Systems</span>
                     <h3>Decoupled Frameworks</h3>
                     <p>Building high-performance game logic independent of MonoBehaviour. Focused on reducing Unity API dependencies for cleaner, testable systems.</p>
-                    <div class="project-meta">
-                        <ul class="tech-list">
-                            <li>C# Clean Architecture</li>
-                            <li>Pure C# Logic</li>
-                            <li>Systems Design</li>
-                        </ul>
-                    </div>
+                    <ul class="tech-list">
+                        <li>C# Clean Architecture</li>
+                        <li>Pure C# Logic</li>
+                        <li>Systems Design</li>
+                    </ul>
                 </div>
 
                 <div class="project-card">
                     <span class="project-tag">Technical Design</span>
                     <h3>Character & Loop Systems</h3>
-                    <p>Implementation of complex gameplay loops, character selection systems, and robust core mechanics for scalable prototypes and full titles.</p>
-                    <div class="project-meta">
-                        <ul class="tech-list">
-                            <li>ScriptableObjects</li>
-                            <li>Design Patterns</li>
-                            <li>Addressables</li>
-                        </ul>
-                    </div>
+                    <p>Implementation of complex gameplay loops, character selection systems, and robust core mechanics for scalable prototypes.</p>
+                    <ul class="tech-list">
+                        <li>ScriptableObjects</li>
+                        <li>Design Patterns</li>
+                        <li>Addressables</li>
+                    </ul>
                 </div>
+            </div>
+        </section>
 
-                <div class="project-card">
-                    <span class="project-tag">Asset Management</span>
-                    <h3>Scalable Content Pipelines</h3>
-                    <p>Utilizing Addressables and data-driven design to handle large-scale game content efficiently while maintaining memory performance.</p>
-                    <div class="project-meta">
-                        <ul class="tech-list">
-                            <li>Addressable Assets</li>
-                            <li>Data-Driven Design</li>
-                            <li>Performance Tuning</li>
-                        </ul>
-                    </div>
+        <section id="contact">
+            <div class="section-label">Contact & Presence</div>
+            
+            <div class="contact-grid">
+                <a href="mailto:your-email@example.com" class="contact-card">
+                    <span class="contact-label">Email</span>
+                    <span class="contact-value">Get In Touch</span>
+                </a>
+                
+                <a href="https://github.com/your-username" target="_blank" class="contact-card">
+                    <span class="contact-label">GitHub</span>
+                    <span class="contact-value">Source & Prototypes</span>
+                </a>
+
+                <a href="https://linkedin.com/in/arman-aghighi" target="_blank" class="contact-card">
+                    <span class="contact-label">LinkedIn</span>
+                    <span class="contact-value">Professional Profile</span>
+                </a>
+
+                <div class="contact-card">
+                    <span class="contact-label">Location</span>
+                    <span class="contact-value">Open to Remote / Relocation</span>
                 </div>
             </div>
         </section>

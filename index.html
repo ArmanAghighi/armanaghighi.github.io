@@ -36,11 +36,6 @@ html,body{
     animation:bgShift 20s linear infinite;
 }
 
-@keyframes bgShift{
-    from{background-position:0 0,0 0,0 0,0 0,0 0}
-    to{background-position:200px 200px,-200px -200px,0 0,0 0,0 0}
-}
-
 /* ===== GATE & CONTINUE BUTTON ===== */
 #gateCheckbox { display:none; }
 
@@ -73,6 +68,7 @@ html,body{
     text-transform:uppercase;
     cursor:pointer;
     transition:all .3s ease;
+    border-radius: 20px;
 }
 
 #continueBtn:hover{
@@ -121,6 +117,7 @@ html,body{
     flex-direction:column;
     align-items:center;
     margin:4rem auto 2rem auto;
+    border-radius: 20px;
 }
 
 .hero{
@@ -176,6 +173,7 @@ h1{
     background:#00ff88;
     border-radius:50%;
     box-shadow:0 0 10px #00ff88;
+    border-radius: 20px;
 }
 
 /* ===== SUMMARY SECTION ===== */
@@ -191,14 +189,15 @@ h1{
     border:1px solid rgba(0,255,255,.15);
     padding:3rem;
     backdrop-filter: blur(6px);
+    border-radius: 20px;
 }
 
 .summary-title{
     color:#00ffff;
+    font-size:1rem;
     text-transform:uppercase;
     letter-spacing:3px;
-    font-size:.9rem;
-    margin-bottom:1.5rem;
+    margin-bottom:2rem;
 }
 
 .summary-text{
@@ -263,24 +262,27 @@ h1{
     flex-direction:column;
     align-items:center;
     gap:1.5rem;
-    margin-bottom:3rem;
+    margin-top:1rem;
 }
 
 .download-btn{
-    padding:1rem 2rem;
+    padding:1rem 3rem;
     background:transparent;
     color:#00ffff;
     border:1px solid #00ffff;
+    font-size:0.9rem;
+    letter-spacing:2px;
     text-transform:uppercase;
     cursor:pointer;
-    transition: all .3s ease;
-    font-size:0.9rem;
+    transition:all .3s ease;
+    border-radius: 20px;
 }
 
 .download-btn:hover{
     background:#00ffff;
     color:#050505;
     box-shadow:0 0 25px rgba(0,255,255,.5);
+    border-radius: 20px;
 }
 
 .resume-preview{
@@ -315,6 +317,7 @@ h1{
     padding:1rem;
     backdrop-filter: blur(6px);
     gap:1rem;               
+    border-radius: 20px;
 }
 
 .project-img{
@@ -349,7 +352,62 @@ h1{
 .project-info a:hover{
     text-decoration:underline;
 }
+/* ===== CONTACT SECTION ===== */
+.contact-section{
+    padding:6rem 0 8rem;
+    display:flex;
+    justify-content:center;
+}
 
+.contact-box{
+    max-width:900px;
+    width:100%;
+    background:rgba(255,255,255,.03);
+    border:1px solid rgba(0,255,255,.15);
+    padding:3rem;
+    backdrop-filter:blur(6px);
+    text-align:center;
+    border-radius: 20px;
+}
+
+.contact-title{
+    color:#00ffff;
+    text-transform:uppercase;
+    letter-spacing:3px;
+    font-size:1rem;
+    margin-bottom:1.5rem;
+}
+
+.contact-text{
+    color:#b0b0b0;
+    line-height:1.7;
+    margin-bottom:2.5rem;
+}
+
+.contact-methods{
+    display:flex;
+    justify-content:center;
+    gap:1.5rem;
+    flex-wrap:wrap;
+}
+
+.contact-btn{
+    padding:0.9rem 2.2rem;
+    border:1px solid #00ffff;
+    color:#00ffff;
+    text-decoration:none;
+    text-transform:uppercase;
+    font-size:0.85rem;
+    letter-spacing:2px;
+    border-radius:25px;
+    transition:all .3s ease;
+}
+
+.contact-btn:hover{
+    background:#00ffff;
+    color:#050505;
+    box-shadow:0 0 25px rgba(0,255,255,.5);
+}
 /* Start HTML Code */
 
 </style>
@@ -444,17 +502,17 @@ h1{
                 <!-- ===== RESUME SECTION ===== -->
                 <section class="resume-section">
                     <div class="resume-title">Resume</div>
+                    <iframe src="ArmanAghighi_Resume.pdf" class="resume-preview"></iframe>
                     <div class="resume-actions">
                         <a href="ArmanAghighi_Resume.pdf" download class="download-btn">Download</a>
                     </div>
-                    <iframe src="ArmanAghighi_Resume.pdf" class="resume-preview"></iframe>
                 </section>
                 <!-- ===== PROJECTS SECTION ===== -->
                 <section class="projects-section">
                     <div class="projects-container">
                         <!-- Project Card -->        
                         <div class="project-card">
-                            <h4>SpaceShooter</h4>
+                            <h4>Space Shooter</h4>
                             <img src="SpaceShooter.png" alt="SpaceShooter" class="project-img">
                             <div class="project-info">
                                 <p><strong>Device:</strong> PC</p>
@@ -465,38 +523,55 @@ h1{
                         </div>
                          <!-- Project Card -->        
                         <div class="project-card">
-                            <h4>DoodleJump</h4>
+                            <h4>Doodle Jump ++</h4>
                             <img src="DoodleJump.png" alt="DoodleJump" class="project-img">
                             <div class="project-info">
                                 <p><strong>Device:</strong> PC</p>
                                 <p><strong>Access Link:</strong> <a href="#">Demo</a></p>
-                                <p><strong>GitHub:</strong> <a href="#">Repo</a></p>
+                                <p><strong>GitHub:</strong> <a href="https://github.com/ArmanAghighi/ArmanAghighi_DoodleJump">Repo</a></p>
                                 <p><strong>Size:</strong> 50MB</p>
                             </div>
                         </div>
                          <!-- Project Card -->        
                         <div class="project-card">
-                            <h4>SpaceShooter</h4>
-                            <img src="SpaceShooter.png" alt="SpaceShooter" class="project-img">
+                            <h4>Jungle Word</h4>
+                            <img src="JungleWord.png" alt="JungleWord" class="project-img">
                             <div class="project-info">
                                 <p><strong>Device:</strong> PC</p>
                                 <p><strong>Access Link:</strong> <a href="#">Demo</a></p>
-                                <p><strong>GitHub:</strong> <a href="#">Repo</a></p>
+                                <p><strong>GitHub:</strong> <a href="https://github.com/ArmanAghighi/ArmanAghighi_AlphaBettySaga">Repo</a></p>
                                 <p><strong>Size:</strong> 50MB</p>
                             </div>
                         </div>
                          <!-- Project Card -->        
                         <div class="project-card">
-                            <h4>SpaceShooter</h4>
-                            <img src="SpaceShooter.png" alt="SpaceShooter" class="project-img">
+                            <h4>Rock Paper Scissor</h4>
+                            <img src="RockPaperScissor.png" alt="RockPaperScissor" class="project-img">
                             <div class="project-info">
                                 <p><strong>Device:</strong> PC</p>
                                 <p><strong>Access Link:</strong> <a href="#">Demo</a></p>
-                                <p><strong>GitHub:</strong> <a href="#">Repo</a></p>
+                                <p><strong>GitHub:</strong> <a href="#https://github.com/ArmanAghighi/Rock-Paper-Scissor">Repo</a></p>
                                 <p><strong>Size:</strong> 50MB</p>
                             </div>
                         </div>
                         
+                    </div>
+                </section>
+                <!-- ===== CONTACT SECTION ===== -->
+                <section class="contact-section">
+                    <div class="contact-box">
+                        <div class="contact-title">Contact Me</div>
+
+                        <p class="contact-text">
+                            Interested in working together or have a technical question?<br>
+                            Reach out through any of the channels below.
+                        </p>
+
+                        <div class="contact-methods">
+                            <a href="mailto:armanaghighi@gmail.com" class="contact-btn">Email</a>
+                            <a href="https://github.com/ArmanAghighi" target="_blank" class="contact-btn">GitHub</a>
+                            <a href="https://linkedin.com/in/arman-aghighy" target="_blank" class="contact-btn">LinkedIn</a>
+                        </div>
                     </div>
                 </section>
             </div>

@@ -1,284 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arman Aghighi | Game Developer</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arman Aghighi | Game Developer</title>
 
-        body, html {
-            width: 100%;
-            height: auto;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: #050505;
-            color: #e0e0e0;
-            line-height: 1.6;
-            scroll-behavior: smooth;
-        }
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
 
-        /* BACKGROUND LAYER */
-        .background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1;
-            background: 
-                url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E"),
-                linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 255, 255, 0.02) 50%),
-                linear-gradient(90deg, rgba(18, 16, 16, 0) 50%, rgba(0, 255, 255, 0.02) 50%),
-                radial-gradient(circle at 20% 30%, rgba(70, 0, 255, 0.1) 0%, transparent 40%),
-                radial-gradient(circle at 80% 70%, rgba(0, 255, 255, 0.06) 0%, transparent 40%),
-                radial-gradient(circle at 50% 50%, #0a0a0c 0%, #050505 100%);
-            background-size: 100% 100%, 40px 40px, 40px 40px, 100% 100%, 100% 100%, 100% 100%;
-        }
+html,body{
+    width:100%;
+    height:100%;
+    font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    background:#050505;
+    color:#e0e0e0;
+}
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
+/* ===== LOADING / GATE ===== */
+#gate{
+    position:fixed;
+    inset:0;
+    background:#050505;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    z-index:9999;
+}
 
-        /* HERO SECTION */
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
+#gate h1{
+    color:white;
+    letter-spacing:4px;
+    margin-bottom:2rem;
+    text-transform:uppercase;
+}
 
-        .name-container {
-            border-left: 4px solid #00ffff;
-            padding-left: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
+#continueBtn{
+    padding:1rem 3rem;
+    background:transparent;
+    color:#00ffff;
+    border:1px solid #00ffff;
+    font-size:0.9rem;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    cursor:pointer;
+    transition:all .3s ease;
+}
 
-        h1 {
-            font-size: clamp(2.5rem, 8vw, 4rem);
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            color: #ffffff;
-            margin: 0;
-            font-weight: 800;
-        }
+#continueBtn:hover{
+    background:#00ffff;
+    color:#050505;
+    box-shadow:0 0 20px rgba(0,255,255,.4);
+}
 
-        .hero-title {
-            font-size: clamp(1rem, 3vw, 1.25rem);
-            color: #00ffff;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 2rem;
-            font-weight: 600;
-        }
+/* ===== MAIN CONTENT ===== */
+#main{
+    display:none;
+}
 
-        .hero-description {
-            font-size: 1.1rem;
-            max-width: 700px;
-            color: #b0b0b0;
-            margin-bottom: 3rem;
-        }
+.background{
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    background:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E"),
+        radial-gradient(circle at 50% 50%, #0a0a0c, #050505);
+}
 
-        .highlight { color: #ffffff; font-weight: 500; }
+.container{
+    max-width:1100px;
+    margin:0 auto;
+    padding:0 2rem;
+}
 
-        /* SECTION HEADERS */
-        .section-label {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            color: #00ffff;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            font-size: 0.9rem;
-            margin-bottom: 3rem;
-            margin-top: 4rem;
-        }
+.hero{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
 
-        .section-label::after {
-            content: "";
-            height: 1px;
-            flex-grow: 1;
-            background: linear-gradient(90deg, #00ffff, transparent);
-        }
+.name-container{
+    border-left:4px solid #00ffff;
+    padding-left:1.5rem;
+    margin-bottom:1.5rem;
+}
 
-        /* PROJECTS GRID */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-        }
+h1{
+    font-size:clamp(2.5rem,8vw,4rem);
+    letter-spacing:4px;
+    text-transform:uppercase;
+    color:white;
+}
 
-        .project-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 2rem;
-            position: relative;
-            transition: transform 0.3s ease, border-color 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
+.hero-title{
+    color:#00ffff;
+    letter-spacing:2px;
+    margin-bottom:2rem;
+    text-transform:uppercase;
+}
 
-        .project-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(0, 255, 255, 0.3);
-            background: rgba(255, 255, 255, 0.04);
-        }
+.hero-description{
+    max-width:700px;
+    color:#b0b0b0;
+    margin-bottom:2rem;
+}
 
-        .project-card h3 {
-            color: #ffffff;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            letter-spacing: 1px;
-        }
+.highlight{color:white}
 
-        .project-tag {
-            font-size: 0.7rem;
-            background: rgba(0, 255, 255, 0.1);
-            color: #00ffff;
-            padding: 2px 8px;
-            border-radius: 2px;
-            text-transform: uppercase;
-            margin-bottom: 1rem;
-            display: inline-block;
-            align-self: flex-start;
-        }
+.availability-badge{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    color:#00ff88;
+}
 
-        .project-card p {
-            color: #b0b0b0;
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .tech-list {
-            list-style: none;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-            margin-top: auto;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .tech-list li {
-            font-size: 0.8rem;
-            color: #888;
-            display: flex;
-            align-items: center;
-        }
-
-        .tech-list li::before {
-            content: "▹";
-            color: #00ffff;
-            margin-right: 5px;
-        }
-
-        /* RESUME SECTION */
-        .resume-section {
-            background: rgba(0, 255, 255, 0.03);
-            border: 1px dashed rgba(0, 255, 255, 0.2);
-            padding: 3rem;
-            text-align: center;
-            margin-bottom: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .resume-icon {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .resume-btn {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            background: transparent;
-            color: #00ffff;
-            border: 1px solid #00ffff;
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-
-        .resume-btn:hover {
-            background: #00ffff;
-            color: #050505;
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
-        }
-
-        /* CONTACT GRID */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            padding-bottom: 8rem;
-        }
-
-        .contact-card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 1.5rem;
-            text-decoration: none;
-            display: flex;
-            flex-direction: column;
-            transition: all 0.3s ease;
-        }
-
-        .contact-card:hover {
-            background: rgba(0, 255, 255, 0.03);
-            border-color: rgba(0, 255, 255, 0.4);
-        }
-
-        .contact-label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            color: #00ffff;
-            letter-spacing: 1.5px;
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-value {
-            font-size: 1.1rem;
-            color: #ffffff;
-            font-weight: 500;
-        }
-
-        .availability-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 1rem;
-            font-size: 0.85rem;
-            color: #00ff88;
-        }
-
-        .dot {
-            height: 8px;
-            width: 8px;
-            background-color: #00ff88;
-            border-radius: 50%;
-            display: inline-block;
-            box-shadow: 0 0 8px #00ff88;
-        }
-
-        @media (max-width: 600px) {
-            .hero { padding: 0 1rem; }
-            .resume-section { padding: 2rem 1rem; }
-        }
-    </style>
+.dot{
+    width:8px;
+    height:8px;
+    background:#00ff88;
+    border-radius:50%;
+    box-shadow:0 0 8px #00ff88;
+}
+</style>
 </head>
+
 <body>
+
+<!-- ===== GATE ===== -->
+<div id="gate">
+    <h1>Arman Aghighi</h1>
+    <button id="continueBtn">Continue</button>
+</div>
+
+<!-- ===== MAIN ===== -->
+<div id="main">
     <div class="background"></div>
 
     <div class="container">
@@ -286,89 +144,29 @@
             <div class="name-container">
                 <h1>Arman Aghighi</h1>
             </div>
+
             <div class="hero-title">Game Developer | Unity | Gameplay & Systems</div>
+
             <p class="hero-description">
-                Building scalable, maintainable game architectures with a focus on <span class="highlight">decoupled C# logic</span> and <span class="highlight">procedural generation</span>. University-level background in dynamic gameplay design based on player ability.
+                Building scalable, maintainable game architectures with a focus on
+                <span class="highlight">decoupled C# logic</span> and
+                <span class="highlight">procedural generation</span>.
             </p>
+
             <div class="availability-badge">
-                <span class="dot"></span> Available for technical opportunities
+                <span class="dot"></span>
+                Available for technical opportunities
             </div>
         </header>
-
-        <section id="projects">
-            <div class="section-label">Featured Work & Expertise</div>
-            
-            <div class="projects-grid">
-                <div class="project-card">
-                    <span class="project-tag">Academic Thesis</span>
-                    <h3>Dynamic Gameplay Generation</h3>
-                    <p>Design and implementation of a system in Unity that uses procedural generation to adjust gameplay based on player ability and play style.</p>
-                    <ul class="tech-list">
-                        <li>Unity</li>
-                        <li>Procedural Generation</li>
-                        <li>Adaptive Systems</li>
-                    </ul>
-                </div>
-
-                <div class="project-card">
-                    <span class="project-tag">Core Systems</span>
-                    <h3>Decoupled Frameworks</h3>
-                    <p>Building high-performance game logic independent of MonoBehaviour. Focused on reducing Unity API dependencies for cleaner, testable systems.</p>
-                    <ul class="tech-list">
-                        <li>C# Clean Architecture</li>
-                        <li>Pure C# Logic</li>
-                        <li>Systems Design</li>
-                    </ul>
-                </div>
-
-                <div class="project-card">
-                    <span class="project-tag">Technical Design</span>
-                    <h3>Character & Loop Systems</h3>
-                    <p>Implementation of complex gameplay loops, character selection systems, and robust core mechanics for scalable prototypes.</p>
-                    <ul class="tech-list">
-                        <li>ScriptableObjects</li>
-                        <li>Design Patterns</li>
-                        <li>Addressables</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section id="resume">
-            <div class="section-label">Technical Background</div>
-            <div class="resume-section">
-                <div class="resume-icon">📄</div>
-                <h3 style="color: white; letter-spacing: 1px;">Full Technical Resume</h3>
-                <p style="color: #888; max-width: 500px;">Download my comprehensive CV including detailed project breakdowns, academic presentations, and full technical stack proficiency.</p>
-                <a href="resume.pdf" download="Arman_Aghighi_Resume.pdf" class="resume-btn">Download PDF</a>
-            </div>
-        </section>
-
-        <section id="contact">
-            <div class="section-label">Contact & Presence</div>
-            
-            <div class="contact-grid">
-                <a href="mailto:your-email@example.com" class="contact-card">
-                    <span class="contact-label">Email</span>
-                    <span class="contact-value">Get In Touch</span>
-                </a>
-                
-                <a href="https://github.com/your-username" target="_blank" class="contact-card">
-                    <span class="contact-label">GitHub</span>
-                    <span class="contact-value">Source & Prototypes</span>
-                </a>
-
-                <a href="https://linkedin.com/in/arman-aghighi" target="_blank" class="contact-card">
-                    <span class="contact-label">LinkedIn</span>
-                    <span class="contact-value">Professional Profile</span>
-                </a>
-
-                <div class="contact-card">
-                    <span class="contact-label">Location</span>
-                    <span class="contact-value">Open to Remote / Relocation</span>
-                </div>
-            </div>
-        </section>
     </div>
+</div>
+
+<script>
+document.getElementById("continueBtn").onclick = () => {
+    document.getElementById("gate").remove();
+    document.getElementById("main").style.display = "block";
+};
+</script>
+
 </body>
 </html>

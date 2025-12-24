@@ -13,6 +13,7 @@ html,body{
     height:100%;
     font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
     color:#e0e0e0;
+    background:#050505;
 }
 
 /* ===== MODERN BACKGROUND ===== */
@@ -35,274 +36,13 @@ html,body{
     animation:bgShift 20s linear infinite;
 }
 
-/* ===== GATE & CONTINUE BUTTON ===== */
-#gateCheckbox { display:none; }
-
-#gate{
-    transition:
-    opacity .8s ease,
-    transform .8s cubic-bezier(.16,1,.3,1),
-    filter .8s ease;
-    position:fixed;
-    inset:0;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    z-index:9999;
-    transition:opacity .8s ease, transform .8s ease;
-}
-
-#gateCheckbox:checked ~ #gate{
-    opacity:0;
-    transform:scale(1.1) translateY(-20px);
-    filter:blur(10px);
-    pointer-events:none;
-}
-
-#gate h1{
-    color:white;
-    letter-spacing:4px;
-    margin-bottom:2rem;
-    text-transform:uppercase;
-}
-
-#continueBtn{
-    padding:1rem 3rem;
-    background:transparent;
-    color:#00ffff;
-    border:1px solid #00ffff;
-    font-size:0.9rem;
-    letter-spacing:2px;
-    text-transform:uppercase;
-    cursor:pointer;
-    transition:all .3s ease;
-    border-radius: 20px;
-}
-
-#continueBtn:hover{
-    background:#00ffff;
-    color:#050505;
-    box-shadow:0 0 25px rgba(0,255,255,.5);
-}
-
-/* ===== MAIN CONTENT ===== */
-#main{
-    opacity:0;
-    transform:scale(.97) translateY(40px);
-    transition:
-        opacity .9s ease,
-        transform .9s cubic-bezier(.16,1,.3,1);
-    pointer-events:none;
-    visibility:hidden;
-}
-
-#gateCheckbox:checked ~ #main{
-    opacity:1;
-    transform:scale(1) translateY(0);
-    pointer-events:auto;
-    visibility:visible;
-}
-
-#gateCheckbox:checked ~ #gate{
-    opacity:0;
-    transform:scale(1.1);
-    pointer-events:none;
-}
-
+/* ===== MAIN CONTAINER ===== */
 .container{
     max-width:1100px;
     margin:0 auto;
     padding:0 2rem;
 }
 
-/* ===== HERO BOX ===== */
-.hero-box{
-    width:100%;
-    max-width:900px;
-    padding:3rem;
-    background: rgba(255,255,255,0.03);
-    border:1px solid rgba(0,255,255,.15);
-    backdrop-filter: blur(6px);
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    margin:4rem auto 2rem auto;
-    border-radius: 20px;
-}
-
-.hero{
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    width:100%;
-}
-
-.name-container{
-    border-left:4px solid #00ffff;
-    padding-left:1.5rem;
-    margin-bottom:1.5rem;
-    border-right: 4px solid #00ffff;
-    padding-right: 1.5rem;
-    margin-bottom: 1.5rem;
-}
-
-h1{
-    font-size:clamp(2.5rem,8vw,4rem);
-    letter-spacing:4px;
-    text-transform:uppercase;
-    color:white;
-}
-
-.hero-title{
-    color:#00ffff;
-    letter-spacing:2px;
-    margin-bottom:2rem;
-    text-transform:uppercase;
-}
-
-.hero-description{
-    max-width:700px;
-    color:#b0b0b0;
-    margin-bottom:2rem;
-}
-
-.highlight{color:white}
-
-.availability-badge{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    color:#00ff88;
-}
-
-.dot{
-    width:8px;
-    height:8px;
-    background:#00ff88;
-    border-radius:50%;
-    box-shadow:0 0 10px #00ff88;
-    border-radius: 20px;
-}
-
-/* ===== SUMMARY SECTION ===== */
-.summary{
-    padding:6rem 0 8rem;
-    display:flex;
-    justify-content:center;
-}
-
-.summary-box{
-    max-width:900px;
-    background:rgba(255,255,255,.03);
-    border:1px solid rgba(0,255,255,.15);
-    padding:3rem;
-    backdrop-filter: blur(6px);
-    border-radius: 20px;
-}
-
-.summary-title{
-    color:#00ffff;
-    font-size:1rem;
-    text-transform:uppercase;
-    letter-spacing:3px;
-    margin-bottom:2rem;
-}
-
-.summary-text{
-    color:#b0b0b0;
-    line-height:1.8;
-    margin-bottom:2rem;
-}
-
-.summary-grid{
-    display:grid;
-    grid-template-columns:repeat(2, 1fr); 
-    gap:2.5rem;
-}
-
-.summary-item ul{
-    margin:0;
-    padding-left:1.2rem; 
-    color:#b0b0b0;
-}
-
-.summary-item ul li{
-    margin-bottom:.3rem;
-}
-
-.summary-item{
-    border-left:3px solid #00ffff;
-    padding-left:1rem;
-    border-right:3px solid #00ffff;
-    padding-right:1rem;
-}
-
-.summary-item h4{
-    color:white;
-    margin-bottom:.5rem;
-    font-size:1rem;
-}
-
-.summary-item p{
-    font-size:.85rem;
-    color:#999;
-}
-
-/* ===== RESUME SECTION ===== */
-.resume-section{
-    padding:6rem 0 8rem;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-}
-
-.resume-title{
-    color:#00ffff;
-    font-size:1rem;
-    text-transform:uppercase;
-    letter-spacing:3px;
-    margin-bottom:2rem;
-}
-
-.resume-actions{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:1.5rem;
-    margin-top:1rem;
-}
-
-.download-btn{
-    padding:1rem 3rem;
-    background:transparent;
-    color:#00ffff;
-    border:1px solid #00ffff;
-    font-size:0.9rem;
-    letter-spacing:2px;
-    text-transform:uppercase;
-    cursor:pointer;
-    transition:all .3s ease;
-    border-radius: 20px;
-}
-
-.download-btn:hover{
-    background:#00ffff;
-    color:#050505;
-    box-shadow:0 0 25px rgba(0,255,255,.5);
-    border-radius: 20px;
-}
-
-.resume-preview{
-    width:100%;
-    max-width:900px;
-    height:500px;
-    border:1px solid rgba(0,255,255,.15);
-    backdrop-filter: blur(6px);
-}
 /* ===== PROJECTS SECTION ===== */
 .projects-section{
     padding:6rem 0;
@@ -323,18 +63,12 @@ h1{
 .projects-box{
     max-width:1100px;
     width:100%;
-    background:rgba(255,255,255,.03);
-    border:1px solid rgba(0,255,255,.15);
-    padding:3rem;
-    backdrop-filter:blur(6px);
-    border-radius:20px;
 }
 
 .projects-container{
     display: grid;
-    grid-template-columns: repeat(4, 1fr); 
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
     gap: 2rem;
-    padding: 2rem 0;
 }
 
 .project-card{
@@ -349,6 +83,17 @@ h1{
     backdrop-filter: blur(6px);
     gap:1rem;               
     border-radius: 20px;
+    position: relative; /* برای آیکون ویدیو */
+}
+
+.project-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 0 25px rgba(0,255,255,.15);
+}
+
+.project-card.active{
+    border-color:#00ffff;
+    box-shadow:0 0 35px rgba(0,255,255,.35);
 }
 
 .project-img{
@@ -363,33 +108,41 @@ h1{
     flex-direction: column;
     align-items: center; 
     gap:.3rem;
+    text-align:center;
 }
-.project-info h4{
-    color:white;
-    margin-bottom:0.5rem;
-}
-
-.project-info h4{
-    margin:0 0 .3rem 0;
-    color:#00ffff;
-}
-
 
 .project-info a{
     color:#00ffff;
     text-decoration:none;
+    font-size:0.85rem;
 }
 
-.project-card:hover{
-    transform:translateY(-6px);
-    box-shadow:0 0 25px rgba(0,255,255,.15);
+/* ===== VIDEO ICON ===== */
+.play-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    z-index: 2;
 }
 
-.project-card.active{
-    border-color:#00ffff;
-    box-shadow:0 0 35px rgba(0,255,255,.35);
+.play-overlay img, .play-overlay svg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 5px rgba(0,255,255,0.7));
+    transition: transform 0.3s ease;
 }
 
+.play-overlay:hover img,
+.play-overlay:hover svg {
+    transform: scale(1.2);
+}
+
+/* ===== VIDEO PLAYER BOX ===== */
 .project-video-box{
     margin-top:3rem;
     width:100%;
@@ -405,268 +158,125 @@ h1{
     border:1px solid rgba(0,255,255,.2);
     background:#000;
 }
-
-#projectVideo.show{
-    opacity:1;
-}
-
-/* ===== CONTACT SECTION ===== */
-.contact-section{
-    padding:6rem 0 8rem;
-    display:flex;
-    justify-content:center;
-}
-
-.contact-box{
-    max-width:900px;
-    width:100%;
-    background:rgba(255,255,255,.03);
-    border:1px solid rgba(0,255,255,.15);
-    padding:3rem;
-    backdrop-filter:blur(6px);
-    text-align:center;
-    border-radius: 20px;
-}
-
-.contact-title{
-    color:#00ffff;
-    text-transform:uppercase;
-    letter-spacing:3px;
-    font-size:1rem;
-    margin-bottom:1.5rem;
-}
-
-.contact-text{
-    color:#b0b0b0;
-    line-height:1.7;
-    margin-bottom:2.5rem;
-}
-
-.contact-methods{
-    display:flex;
-    justify-content:center;
-    gap:1.5rem;
-    flex-wrap:wrap;
-}
-
-.contact-btn{
-    padding:0.9rem 2.2rem;
-    border:1px solid #00ffff;
-    color:#00ffff;
-    text-decoration:none;
-    text-transform:uppercase;
-    font-size:0.85rem;
-    letter-spacing:2px;
-    border-radius:25px;
-    transition:all .3s ease;
-}
-
-.contact-btn:hover{
-    background:#00ffff;
-    color:#050505;
-    box-shadow:0 0 25px rgba(0,255,255,.5);
-}
-/* Start HTML Code */
-
 </style>
 </head>
-    <body>
-        <div class="background"></div>
-        <!-- ===== GATE ===== -->
-        <input type="checkbox" id="gateCheckbox">
-        <div id="gate">
-            <h1>Arman Aghighi</h1>
-            <label for="gateCheckbox" id="continueBtn">Continue</label>
-        </div>
+<body>
+<div class="background"></div>
 
-        <!-- ===== MAIN ===== -->
-        <div id="main">
-            <div class="container">
-                <header class="hero">
-                    <div class="hero-box">
-                        <div class="name-container">
-                            <h1>Arman Aghighi Portfolio</h1>
-                        </div>
+<!-- ===== PROJECTS SECTION ===== -->
+<section class="projects-section">
+    <div class="projects-title">Projects</div>
+    <div class="projects-box">
+        <div class="projects-container">
 
-                        <div class="hero-title">Game Developer | Unity | Gameplay & Systems</div>
+            <!-- Project Card -->        
+            <div class="project-card">
+                <h4>Space Shooter</h4>
+                <img src="SpaceShooter.png" alt="SpaceShooter" class="project-img">
+                <div class="project-info">
+                    <p><strong>Device:</strong> PC</p>
+                    <p><strong>Access Link:</strong> <a href="#">Demo</a></p>
+                    <p><strong>GitHub:</strong> <a href="https://github.com/ArmanAghighi/ArmanAghighi_SpaceShooter" target="_blank">Repo</a></p>
+                    <p><strong>Size:</strong> 50MB</p>
+                </div>
 
-                        <p class="hero-description">
-                            Building scalable, maintainable game architectures with<br>
-                            <span class="highlight">Decoupled C# Logic</span><br>
-                            <span class="highlight">Core Unity Gameplay</span><br>
-                            <span class="highlight">Unity Game Design Tools</span>.
-                        </p>
-
-                        <div class="availability-badge">
-                            <span class="dot"></span>
-                            Available for technical opportunities and open work opportunity
-                            <span class="dot"></span>
-                        </div>
-                    </div>
-                </header>
-                <!-- ===== Summery SECTION ===== -->
-                <section class="summary">
-                    <div class="summary-box">
-                        <div class="summary-title">Summary</div>
-                        <p class="summary-text">
-                            Unity-focused Game Developer with strong emphasis on clean architecture,
-                            gameplay systems and technical design. Experienced in building scalable
-                            systems that separate core logic from engine dependencies.
-                        </p>
-                        <div class="summary-grid">
-                            <div class="summary-item">
-                                <h4>Core Focus</h4>
-                                <ul>
-                                    <li>UI & UX</li>
-                                    <li>Engine Tools</li>
-                                    <li>Architectures</li>
-                                    <li>Design Patterns</li>
-                                    <li>Gameplay systems</li>
-                                </ul>
-                            </div>
-                            <div class="summary-item">
-                                <h4>Unity Engine</h4>
-                                <ul>
-                                    <li>C# & Mono</li>
-                                    <li>Addressables</li>
-                                    <li>Android & WebGL</li>
-                                    <li>AugmentedReality</li>
-                                    <li>ScriptableObjects</li>
-                                </ul>
-                            </div>
-                            <div class="summary-item">
-                                <h4>Approach</h4>
-                                <ul>
-                                    <li>Clean Code</li>
-                                    <li>Build Setting</li>
-                                    <li>Decoupled Logic</li>
-                                    <li>Testable Systems</li>
-                                    <li>Device Optimization</li>
-                                </ul>
-                            </div>
-                            <div class="summary-item">
-                                <h4>Interest</h4>
-                                <ul>
-                                    <li>Unreal Engine</li>
-                                    <li>Level Generator</li>
-                                    <li>Adaptive Gameplay</li>
-                                    <li>Shader Programming</li>
-                                    <li>Procedural Generation</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <!-- ===== RESUME SECTION ===== -->
-                <section class="resume-section">
-                    <div class="resume-title">Resume</div>
-                    <iframe src="ArmanAghighi_Resume.pdf" class="resume-preview"></iframe>
-                    <div class="resume-actions">
-                        <a href="ArmanAghighi_Resume.pdf" download class="download-btn">Download</a>
-                    </div>
-                </section>
-                <!-- ===== PROJECTS SECTION ===== -->
-                <section class="projects-section">
-                    <div class="projects-title">Projects</div>
-                    <div class="projects-box">
-                        <div class="projects-container">
-                            <!-- Project Card -->        
-                            <div class="project-card">
-                                <h4>Space Shooter</h4>
-                                <img src="SpaceShooter.png" alt="SpaceShooter" class="project-img">
-                                <div class="project-info">
-                                    <p><strong>Device:</strong> PC</p>
-                                    <p><strong>Access Link:</strong> <a href="#">Demo</a></p>
-                                    <p><strong>GitHub:</strong> <a href="https://github.com/ArmanAghighi/ArmanAghighi_SpaceShooter" target="_blank">Repo</a></p>
-                                    <p><strong>Size:</strong> 50MB</p>
-                                    <div class="project-card" data-video="videos/spaceshooter.mp4"></div>
-                                </div>
-                            </div>
-                            <!-- Project Card -->        
-                            <div class="project-card">
-                                <h4>Doodle Jump ++</h4>
-                                <img src="DoodleJump.png" alt="DoodleJump" class="project-img">
-                                <div class="project-info">
-                                    <p><strong>Device:</strong> PC</p>
-                                    <p><strong>Access Link:</strong> <a href="#">Demo</a></p>
-                                    <p><strong>GitHub:</strong> <a href="https://github.com/ArmanAghighi/ArmanAghighi_DoodleJump">Repo</a></p>
-                                    <p><strong>Size:</strong> 50MB</p>
-                                    <div class="project-card" data-video="videos/DoodleJump.mp4"></div>
-                                </div>
-                            </div>
-                            <!-- Project Card -->        
-                            <div class="project-card">
-                                <h4>Jungle Word</h4>
-                                <img src="JungleWord.png" alt="JungleWord" class="project-img">
-                                <div class="project-info">
-                                    <p><strong>Device:</strong> PC</p>
-                                    <p><strong>Access Link:</strong> <a href="#">Demo</a></p>
-                                    <p><strong>GitHub:</strong> <a href="https://github.com/ArmanAghighi/ArmanAghighi_AlphaBettySaga">Repo</a></p>
-                                    <p><strong>Size:</strong> 50MB</p>
-                                    <div class="project-card" data-video="videos/JungleWord.mp4"></div>
-                                </div>
-                            </div>
-                            <!-- Project Card -->        
-                            <div class="project-card">
-                                <h4>Rock Paper Scissor</h4>
-                                <img src="RockPaperScissor.png" alt="RockPaperScissor" class="project-img">
-                                <div class="project-info">
-                                    <p><strong>Device:</strong> PC</p>
-                                    <p><strong>Access Link:</strong> <a href="#">Demo</a></p>
-                                    <p><strong>GitHub:</strong> <a href="#https://github.com/ArmanAghighi/Rock-Paper-Scissor">Repo</a></p>
-                                    <p><strong>Size:</strong> 50MB</p>
-                                    <div class="project-card" data-video="videos/RockPaperScissor.mp4"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-video-box">
-                            <video id="projectVideo" controls></video>
-                        </div>
-                    </div>
-                </section>
-                <!-- ===== CONTACT SECTION ===== -->
-                <section class="contact-section">
-                    <div class="contact-box">
-                        <div class="contact-title">Contact Me</div>
-
-                        <p class="contact-text">
-                            Interested in working together or have a technical question?<br>
-                            Reach out through any of the channels below.
-                        </p>
-
-                        <div class="contact-methods">
-                            <a href="mailto:armanaghighi@gmail.com" class="contact-btn">Email</a>
-                            <a href="https://github.com/ArmanAghighi" target="_blank" class="contact-btn">GitHub</a>
-                            <a href="https://linkedin.com/in/arman-aghighy" target="_blank" class="contact-btn">LinkedIn</a>
-                        </div>
-                    </div>
-                </section>
+                <!-- Video Icon -->
+                <div class="play-overlay" data-video="videos/spaceshooter.mp4">
+                    <svg viewBox="0 0 64 64">
+                        <circle cx="32" cy="32" r="30" fill="rgba(0,255,255,0.3)" />
+                        <polygon points="26,20 46,32 26,44" fill="#00ffff"/>
+                    </svg>
+                </div>
             </div>
+
+            <!-- Project Card -->        
+            <div class="project-card">
+                <h4>Doodle Jump ++</h4>
+                <img src="DoodleJump.png" alt="DoodleJump" class="project-img">
+                <div class="project-info">
+                    <p><strong>Device:</strong> PC</p>
+                    <p><strong>Access Link:</strong> <a href="#">Demo</a></p>
+                    <p><strong>GitHub:</strong> <a href="https://github.com/ArmanAghighi/ArmanAghighi_DoodleJump">Repo</a></p>
+                    <p><strong>Size:</strong> 50MB</p>
+                </div>
+                <div class="play-overlay" data-video="videos/DoodleJump.mp4">
+                    <svg viewBox="0 0 64 64">
+                        <circle cx="32" cy="32" r="30" fill="rgba(0,255,255,0.3)" />
+                        <polygon points="26,20 46,32 26,44" fill="#00ffff"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Project Card -->        
+            <div class="project-card">
+                <h4>Jungle Word</h4>
+                <img src="JungleWord.png" alt="JungleWord" class="project-img">
+                <div class="project-info">
+                    <p><strong>Device:</strong> PC</p>
+                    <p><strong>Access Link:</strong> <a href="#">Demo</a></p>
+                    <p><strong>GitHub:</strong> <a href="https://github.com/ArmanAghighi/ArmanAghighi_AlphaBettySaga">Repo</a></p>
+                    <p><strong>Size:</strong> 50MB</p>
+                </div>
+                <div class="play-overlay" data-video="videos/JungleWord.mp4">
+                    <svg viewBox="0 0 64 64">
+                        <circle cx="32" cy="32" r="30" fill="rgba(0,255,255,0.3)" />
+                        <polygon points="26,20 46,32 26,44" fill="#00ffff"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Project Card -->        
+            <div class="project-card">
+                <h4>Rock Paper Scissor</h4>
+                <img src="RockPaperScissor.png" alt="RockPaperScissor" class="project-img">
+                <div class="project-info">
+                    <p><strong>Device:</strong> PC</p>
+                    <p><strong>Access Link:</strong> <a href="#">Demo</a></p>
+                    <p><strong>GitHub:</strong> <a href="https://github.com/ArmanAghighi/Rock-Paper-Scissor">Repo</a></p>
+                    <p><strong>Size:</strong> 50MB</p>
+                </div>
+                <div class="play-overlay" data-video="videos/RockPaperScissor.mp4">
+                    <svg viewBox="0 0 64 64">
+                        <circle cx="32" cy="32" r="30" fill="rgba(0,255,255,0.3)" />
+                        <polygon points="26,20 46,32 26,44" fill="#00ffff"/>
+                    </svg>
+                </div>
+            </div>
+
         </div>
-        <script>
-            const cards = document.querySelectorAll('.project-card');
-            const video = document.getElementById('projectVideo');
+        <div class="project-video-box">
+            <video id="projectVideo" controls></video>
+        </div>
+    </div>
+</section>
 
-            let activeCard = null;
+<script>
+const playButtons = document.querySelectorAll('.play-overlay');
+const video = document.getElementById('projectVideo');
+let activeCard = null;
 
-            cards.forEach(card => {
-                card.addEventListener('click', () => {
-                    const src = card.dataset.video;
-                    if (!src) return;
+playButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const src = button.dataset.video;
+        if (!src) return;
 
-                    if (activeCard) activeCard.classList.remove('active');
-                    card.classList.add('active');
-                    activeCard = card;
+        // حذف active قبلی
+        if (activeCard) activeCard.classList.remove('active');
 
-                    video.pause();
-                    video.src = src;
-                    video.load();
-                    video.play();
+        // اضافه کردن active جدید
+        const card = button.closest('.project-card');
+        card.classList.add('active');
+        activeCard = card;
 
-                    video.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                });
-            });
-        </script>
-    </body>
+        // پخش ویدیو
+        video.pause();
+        video.src = src;
+        video.load();
+        video.play();
+
+        video.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+});
+</script>
+</body>
 </html>
-

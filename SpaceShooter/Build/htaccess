@@ -1,0 +1,48 @@
+# جلوگیری از کش قدیمی برای فایل‌های WebGL
+<FilesMatch "\.(js|wasm|data|mem|br|gz)$">
+    Header set Cache-Control "no-store"
+</FilesMatch>
+
+# ---------- GZIP ----------
+
+<FilesMatch "\.js\.gz$">
+    Header set Content-Encoding "gzip"
+    Header set Content-Type "application/javascript"
+</FilesMatch>
+
+<FilesMatch "\.wasm\.gz$">
+    Header set Content-Encoding "gzip"
+    Header set Content-Type "application/wasm"
+</FilesMatch>
+
+<FilesMatch "\.data\.gz$">
+    Header set Content-Encoding "gzip"
+    Header set Content-Type "application/octet-stream"
+</FilesMatch>
+
+<FilesMatch "\.mem\.gz$">
+    Header set Content-Encoding "gzip"
+    Header set Content-Type "application/octet-stream"
+</FilesMatch>
+
+# ---------- BROTLI ----------
+
+<FilesMatch "\.js\.br$">
+    Header set Content-Encoding "br"
+    Header set Content-Type "application/javascript"
+</FilesMatch>
+
+<FilesMatch "\.wasm\.br$">
+    Header set Content-Encoding "br"
+    Header set Content-Type "application/wasm"
+</FilesMatch>
+
+<FilesMatch "\.data\.br$">
+    Header set Content-Encoding "br"
+    Header set Content-Type "application/octet-stream"
+</FilesMatch>
+
+<FilesMatch "\.mem\.br$">
+    Header set Content-Encoding "br"
+    Header set Content-Type "application/octet-stream"
+</FilesMatch>

@@ -1,7 +1,6 @@
 body {
-  padding: 0;
   margin: 0;
-  background: #0f172a;
+  background: #020617;
   font-family: Arial, sans-serif;
 }
 
@@ -10,18 +9,12 @@ body {
   inset: 0;
 }
 
-#unity-container.unity-desktop {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 #unity-canvas {
   background: #000;
 }
 
 /* ===== LOADING ===== */
-#unity-loading-bar {
+#unity-loading {
   position: absolute;
   inset: 0;
   background: radial-gradient(circle, #020617, #000);
@@ -31,36 +24,29 @@ body {
   justify-content: center;
 }
 
-#unity-logo {
+#loading-image {
   width: 180px;
-  height: 180px;
-  background: url('logo.png') no-repeat center / contain;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
 
-#unity-progress-bar-empty {
-  width: 300px;
-  height: 10px;
-  background: rgba(255,255,255,0.15);
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-#unity-progress-bar-full {
-  height: 100%;
-  width: 0%;
-  background: linear-gradient(90deg, #38bdf8, #22c55e);
-  transition: width 0.2s ease;
-}
-
-#loading-text {
-  margin-top: 15px;
+#loading-percent {
   color: #e5e7eb;
+  margin-bottom: 10px;
   font-size: 14px;
   letter-spacing: 1px;
 }
 
-/* ===== FOOTER ===== */
-#unity-footer {
-  display: none;
+#loading-bar-bg {
+  width: 280px;
+  height: 8px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#loading-bar-fill {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #38bdf8, #22c55e);
+  transition: width 0.2s ease;
 }

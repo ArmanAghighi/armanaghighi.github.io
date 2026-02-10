@@ -1,16 +1,21 @@
-body {
+html, body {
+  width: 100%;
+  height: 100%;
   margin: 0;
   background: #020617;
   font-family: Arial, sans-serif;
 }
 
 #unity-container {
-  position: absolute;
-  inset: 0;
+  width: 100%;
+  height: 100%;
+  position: relative;
 }
 
 #unity-canvas {
-  background: #000;
+  width: 100%;
+  height: 100%;
+  background: black;
 }
 
 /* ===== LOADING ===== */
@@ -22,24 +27,24 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  z-index: 10;
 }
 
 #loading-image {
   width: 180px;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 #loading-percent {
   color: #e5e7eb;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   font-size: 14px;
-  letter-spacing: 1px;
 }
 
 #loading-bar-bg {
   width: 280px;
   height: 8px;
-  background: rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.25);
   border-radius: 10px;
   overflow: hidden;
 }
@@ -48,5 +53,5 @@ body {
   width: 0%;
   height: 100%;
   background: linear-gradient(90deg, #38bdf8, #22c55e);
-  transition: width 0.2s ease;
+  transition: width 0.15s linear;
 }

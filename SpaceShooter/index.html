@@ -11,6 +11,14 @@
     <div id="unity-container" class="unity-desktop">
       <canvas id="unity-canvas" width=960 height=600 tabindex="-1"></canvas>
       <div id="unity-loading-bar">
+  <div class="loader-box">
+    <img src="TemplateData/logo.png" class="loader-logo">
+    <div class="progress-text" id="progress-text">0%</div>
+    <div class="progress-bg">
+      <div class="progress-fill" id="unity-progress-bar-full"></div>
+    </div>
+  </div>
+</div>
         <div id="unity-logo"></div>
         <div id="unity-progress-bar-empty">
           <div id="unity-progress-bar-full"></div>
@@ -102,8 +110,12 @@
         canvas.style.height = "600px";
       }
 
-      document.querySelector("#unity-loading-bar").style.display = "block";
-
+document.querySelector("#unity-progress-bar-full").style.width = 100 * progress + "%";
+createUnityInstance(canvas, config, (progress) => {
+    const percent = Math.floor(progress * 100);
+    document.querySelector("#unity-progress-bar-full").style.width = percent + "%";
+    document.querySelector("#progress-text").innerText = percent + "%";
+});
       var script = document.createElement("script");
       script.src = loaderUrl;
       script.onload = () => {

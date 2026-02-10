@@ -1,63 +1,66 @@
-body { padding: 0; margin: 0 }
-#unity-container { position: absolute }
-#unity-container.unity-desktop { left: 50%; top: 50%; transform: translate(-50%, -50%) }
-#unity-container.unity-mobile { position: fixed; width: 100%; height: 100% }
-#unity-canvas { background: #000000 }
-.unity-mobile #unity-canvas { width: 100%; height: 100% }
-#unity-loading-bar { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: none }
-#unity-logo { width: 154px; height: 130px; background: url('unity-logo-dark.png') no-repeat center }
-#unity-progress-bar-empty { width: 141px; height: 18px; margin-top: 10px; margin-left: 6.5px; background: url('progress-bar-empty-dark.png') no-repeat center }
-#unity-progress-bar-full { width: 0%; height: 18px; margin-top: 10px; background: url('progress-bar-full-dark.png') no-repeat center }
-#unity-footer { position: relative }
-.unity-mobile #unity-footer { display: none }
-#unity-logo-title-footer { float:left; width: 102px; height: 38px; background: url('unity-logo-title-footer.png') no-repeat center }
-#unity-build-title { float: right; margin-right: 10px; line-height: 38px; font-family: arial; font-size: 18px }
-#unity-fullscreen-button { cursor:pointer; float: right; width: 38px; height: 38px; background: url('fullscreen-button.png') no-repeat center }
-#unity-warning { position: absolute; left: 50%; top: 5%; transform: translate(-50%); background: white; padding: 10px; display: none }
+body {
+  padding: 0;
+  margin: 0;
+  background: #0f172a;
+  font-family: Arial, sans-serif;
+}
+
+#unity-container {
+  position: absolute;
+  inset: 0;
+}
+
+#unity-container.unity-desktop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#unity-canvas {
+  background: #000;
+}
+
+/* ===== LOADING ===== */
 #unity-loading-bar {
-    position: fixed;
-    inset: 0;
-    background: radial-gradient(circle at top, #0a0a0a, #000);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, #020617, #000);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.loader-box {
-    text-align: center;
-    width: 300px;
+#unity-logo {
+  width: 180px;
+  height: 180px;
+  background: url('logo.png') no-repeat center / contain;
+  margin-bottom: 30px;
 }
 
-.loader-logo {
-    width: 120px;
-    margin-bottom: 20px;
-    animation: pulse 1.5s infinite;
+#unity-progress-bar-empty {
+  width: 300px;
+  height: 10px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 10px;
+  overflow: hidden;
 }
 
-.progress-bg {
-    width: 100%;
-    height: 10px;
-    background: #222;
-    border-radius: 5px;
-    overflow: hidden;
+#unity-progress-bar-full {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #38bdf8, #22c55e);
+  transition: width 0.2s ease;
 }
 
-.progress-fill {
-    width: 0%;
-    height: 100%;
-    background: linear-gradient(90deg, #00f5ff, #7cff00);
-    transition: width 0.2s ease;
+#loading-text {
+  margin-top: 15px;
+  color: #e5e7eb;
+  font-size: 14px;
+  letter-spacing: 1px;
 }
 
-.progress-text {
-    color: white;
-    margin-bottom: 10px;
-    font-family: monospace;
-}
-
-@keyframes pulse {
-    0% { transform: scale(1); opacity: 0.7; }
-    50% { transform: scale(1.05); opacity: 1; }
-    100% { transform: scale(1); opacity: 0.7; }
+/* ===== FOOTER ===== */
+#unity-footer {
+  display: none;
 }

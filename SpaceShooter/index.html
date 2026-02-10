@@ -1,11 +1,9 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <title>Space Shooter</title>
-
-  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="TemplateData/style.css">
 </head>
 
@@ -13,11 +11,14 @@
   <div id="unity-container">
     <canvas id="unity-canvas" tabindex="-1"></canvas>
 
+    <!-- LOADING SCREEN -->
     <div id="unity-loading">
-      <img id="loading-image" src="TemplateData/AKASStudio.png" />
+      <img src="TemplateData/AKASStudio.png" class="loading-logo">
+
       <div id="loading-percent">0%</div>
-      <div id="loading-bar-bg">
-        <div id="loading-bar-fill"></div>
+
+      <div class="loading-bar">
+        <div class="loading-bar-fill"></div>
       </div>
     </div>
   </div>
@@ -25,7 +26,7 @@
   <script>
     const canvas = document.querySelector("#unity-canvas");
     const loading = document.querySelector("#unity-loading");
-    const barFill = document.querySelector("#loading-bar-fill");
+    const bar = document.querySelector(".loading-bar-fill");
     const percentText = document.querySelector("#loading-percent");
 
     const buildUrl = "Build";
@@ -38,7 +39,7 @@
       streamingAssetsUrl: "StreamingAssets",
       companyName: "AKAS",
       productName: "Space Shooter",
-      productVersion: "1.0",
+      productVersion: "1.0"
     };
 
     const script = document.createElement("script");
@@ -47,10 +48,11 @@
     script.onload = () => {
       createUnityInstance(canvas, config, (progress) => {
         const p = Math.floor(progress * 100);
-        barFill.style.width = p + "%";
-        percentText.textContent = p + "%";
+        bar.style.width = p + "%";
+        percentText.innerText = p + "%";
       }).then(() => {
-        loading.style.display = "none";
+        loading.classList.add("fade-out");
+        setTimeout(() => loading.remove(), 600);
       });
     };
 

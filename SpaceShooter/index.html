@@ -1,48 +1,60 @@
-<div id="unity-container" class="unity-desktop">
-  <canvas id="unity-canvas" width="960" height="600" tabindex="-1"></canvas>
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <title>Space Shooter</title>
 
-  <div id="unity-loading">
-    <img id="loading-image" src="TemplateData/AKASStudio.png" />
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
 
-    <div id="loading-percent">0%</div>
+  <link rel="stylesheet" href="TemplateData/style.css">
+</head>
 
-    <div id="loading-bar-bg">
-      <div id="loading-bar-fill"></div>
+<body>
+  <div id="unity-container">
+    <canvas id="unity-canvas" tabindex="-1"></canvas>
+
+    <div id="unity-loading">
+      <img id="loading-image" src="TemplateData/AKASStudio.png" />
+      <div id="loading-percent">0%</div>
+      <div id="loading-bar-bg">
+        <div id="loading-bar-fill"></div>
+      </div>
     </div>
   </div>
-</div>
 
-<script>
-  const canvas = document.querySelector("#unity-canvas");
-  const loading = document.querySelector("#unity-loading");
-  const barFill = document.querySelector("#loading-bar-fill");
-  const percentText = document.querySelector("#loading-percent");
+  <script>
+    const canvas = document.querySelector("#unity-canvas");
+    const loading = document.querySelector("#unity-loading");
+    const barFill = document.querySelector("#loading-bar-fill");
+    const percentText = document.querySelector("#loading-percent");
 
-  const buildUrl = "Build";
-  const loaderUrl = buildUrl + "/SpaceShooter.loader.js";
+    const buildUrl = "Build";
+    const loaderUrl = buildUrl + "/SpaceShooter.loader.js";
 
-  const config = {
-    dataUrl: buildUrl + "/SpaceShooter.data",
-    frameworkUrl: buildUrl + "/SpaceShooter.framework.js",
-    codeUrl: buildUrl + "/SpaceShooter.wasm",
-    streamingAssetsUrl: "StreamingAssets",
-    companyName: "AKAS",
-    productName: "Space Shooter",
-    productVersion: "1.0",
-  };
+    const config = {
+      dataUrl: buildUrl + "/SpaceShooter.data",
+      frameworkUrl: buildUrl + "/SpaceShooter.framework.js",
+      codeUrl: buildUrl + "/SpaceShooter.wasm",
+      streamingAssetsUrl: "StreamingAssets",
+      companyName: "AKAS",
+      productName: "Space Shooter",
+      productVersion: "1.0",
+    };
 
-  const script = document.createElement("script");
-  script.src = loaderUrl;
+    const script = document.createElement("script");
+    script.src = loaderUrl;
 
-  script.onload = () => {
-    createUnityInstance(canvas, config, (progress) => {
-      const p = Math.floor(progress * 100);
-      barFill.style.width = p + "%";
-      percentText.innerText = p + "%";
-    }).then(() => {
-      loading.style.display = "none";
-    });
-  };
+    script.onload = () => {
+      createUnityInstance(canvas, config, (progress) => {
+        const p = Math.floor(progress * 100);
+        barFill.style.width = p + "%";
+        percentText.textContent = p + "%";
+      }).then(() => {
+        loading.style.display = "none";
+      });
+    };
 
-  document.body.appendChild(script);
-</script>
+    document.body.appendChild(script);
+  </script>
+</body>
+</html>
